@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>MPE Profile 1.1</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e0e0dc;padding:20px;font-family:'Georgia',serif}
+.page{background:#fff;width:100%;max-width:820px;margin:0 auto;border:1px solid #999;font-size:12px;color:#111}
+.entity-block{padding:15px 18px 13px;border-bottom:2px solid #0d1f3c}
+.entity-name{font-family:'Arial',sans-serif;font-size:23px;font-weight:700;color:#0d1f3c;line-height:1.1;letter-spacing:-0.2px;text-align:center}
+.entity-aka{font-family:'Arial',sans-serif;font-size:10.5px;color:#444;font-style:italic;margin-top:3px;text-align:center;letter-spacing:1px;text-transform:uppercase}
+.summary{padding:12px 18px;background:#f6f7f9;border-bottom:1px solid #aab}
+.sum-lbl{font-family:'Arial',sans-serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#0d1f3c;font-weight:700;margin-bottom:5px}
+.sum-txt{font-family:'Georgia',serif;font-size:11px;line-height:1.8;color:#222;text-align:justify;font-style:italic}
+.sec-hd{display:flex;align-items:stretch;border-top:2px solid #2a4070;border-bottom:1px solid #2a4070}
+.sec-num{background:#0d1f3c;color:#fff;font-family:'Arial',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 9px;min-width:28px;display:flex;align-items:center;justify-content:center}
+.sec-ttl{background:#e8ecf2;border-left:1px solid #2a4070;padding:5px 12px;font-family:'Arial',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0d1f3c;display:flex;align-items:center}
+.sec-body{padding:10px 18px 13px}
+.field{display:flex;gap:0;margin-bottom:3px;font-size:11px;line-height:1.5}
+.fl{font-family:'Arial',sans-serif;font-weight:700;min-width:170px;color:#0d1f3c;font-size:10px;padding-top:1px}
+.fv{color:#222;font-size:11px}
+.subh{font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0d1f3c;border-bottom:1px solid #c5ccd8;padding-bottom:3px;margin:10px 0 6px}
+.prose{font-size:11px;line-height:1.75;color:#222;text-align:justify;margin-bottom:8px}
+.prose:last-child{margin-bottom:0}
+.bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.bul-dot{color:#0d1f3c;font-size:14px;line-height:1.2;flex-shrink:0;margin-top:1px}
+.ev-bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.7;margin-bottom:6px;color:#222;text-align:justify}
+.ev-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:1px}
+.callout{background:#f0f3f8;border-left:3px solid #0d1f3c;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.callout strong{color:#0d1f3c}
+.gap-highlight{background:#fffbf0;border:1px solid #d4a000;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.gap-highlight strong{color:#7a5c00}
+.alert-highlight{background:#fff5f5;border:1px solid #c00000;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.alert-highlight strong{color:#c00000}
+.stbl{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:10px;margin-top:6px}
+.stbl th{background:#0d1f3c;color:#fff;padding:6px 8px;font-size:8.5px;font-weight:700;letter-spacing:1px;text-align:center;border:1px solid #2a4070}
+.stbl th:first-child{text-align:left;padding-left:10px}
+.stbl td{padding:6px 8px;border:1px solid #c8cdd8;text-align:center;vertical-align:top}
+.stbl td:first-child{text-align:left;padding-left:10px;color:#0d1f3c;font-weight:700;font-size:10.5px}
+.sd{display:block;font-size:8.5px;color:#666;font-style:italic;font-weight:400;margin-top:1px}
+.ck{color:#0d1f3c;font-size:14px;font-weight:700}
+.stbl tr:nth-child(even) td{background:#f4f6f9}
+.ttbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:4px}
+.ttbl th{background:#0d1f3c;color:#fff;padding:6px 10px;font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;border:1px solid #2a4070}
+.ttbl td{padding:6px 10px;border:1px solid #c8cdd8;vertical-align:top;line-height:1.55}
+.ttbl td:first-child{font-family:'Arial',sans-serif;font-weight:700;color:#0d1f3c;font-size:10px;white-space:nowrap;width:120px}
+.ttbl tr:nth-child(even) td{background:#f4f6f9}
+.act-bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.act-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:1px}
+.src-bul{display:flex;align-items:flex-start;gap:6px;font-size:10.5px;line-height:1.6;margin-bottom:4px;color:#222}
+.src-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:0}
+.bot-rule{height:4px;background:#0d1f3c}
+a{color:#0d1f3c}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ENTITY HEADER -->
+<div class="entity-block">
+  <div class="entity-name">Myanma Petrochemical Enterprise (MPE)</div>
+  <div class="entity-aka">Profile 1.1</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-lbl">Summary Assessment</div>
+  <div class="sum-txt">Myanma Petrochemical Enterprise (MPE) is the state-owned enterprise illegally seized by Myanmar's military junta on 1 February 2021 that controls the aviation fuel supply chain inside Myanmar. It occupies two simultaneous roles: it is the joint venture partner in the licensed aviation fuel importer, National Energy Prime Aviation Services Co. Ltd. (NEPAS), and the co-controlling entity of the Myan Oil Terminal Company Limited at Thilawa, Yangon, the physical terminal that has received every documented imported aviation fuel shipment since the coup; and it operates the Mann Thanbayarkan petrochemical complex in Magway Region, the only functioning domestic refinery producing aviation turbine fuel for the Myanmar military. Immediately following the coup, MPE ran a tender for the supply of aviation fuel to the Myanmar Air Force, a tender that Puma Energy, the former incumbent supplier, declined to participate in. The entire imported aviation fuel supply chain, including every shipment documented in this database from 2021 to the present, terminates at infrastructure that MPE co-controls. All domestic crude oil extracted by Goldpetrol Joint Operating Company Inc. and received by MPE is refined at the Mann facility into products including aviation turbine fuel, which MPE distributes to Myanmar Air Force bases. MPE has been named as a sanctions target by Amnesty International, Justice for Myanmar, and the United Nations Special Rapporteur on the situation of human rights in Myanmar since November 2022. It has not been sanctioned in any jurisdiction as of April 2026. No government has offered any public explanation for this omission.</div>
+</div>
+
+<!-- IDENTIFICATION -->
+<div>
+  <div class="sec-hd"><div class="sec-num">ID</div><div class="sec-ttl">Identification</div></div>
+  <div class="sec-body">
+    <div class="field"><span class="fl">Full name:</span><span class="fv">Myanma Petrochemical Enterprise</span></div>
+    <div class="field"><span class="fl">Abbreviation:</span><span class="fv">MPE</span></div>
+    <div class="field"><span class="fl">Entity type:</span><span class="fv">State-owned enterprise (SOE), downstream petroleum sector</span></div>
+    <div class="field"><span class="fl">Controlling ministry:</span><span class="fv">Ministry of Electricity and Energy (under junta control since 1 February 2021)</span></div>
+    <div class="field"><span class="fl">Established:</span><span class="fv">1989, as successor to Petrochemical Industries Corporation (established 1975)</span></div>
+    <div class="field"><span class="fl">Headquarters:</span><span class="fv">Nay Pyi Taw, Myanmar</span></div>
+    <div class="field"><span class="fl">Refineries operated:</span><span class="fv">Three listed on junta energy ministry website: No. 1 Refinery, Thanlyin (closed since 2017); No. 2 Refinery, Chauk, Magway (shut down March 2019, per MPE/energy.gov.mm); Mann Thanbayarkan petrochemical complex, Magway (operational)</span></div>
+    <div class="field"><span class="fl">Aviation fuel production:</span><span class="fv">Aviation Turbine Fuel (ATF) confirmed as a product of the Mann Thanbayarkan complex, per MPE's own website</span></div>
+    <div class="field"><span class="fl">Designation status:</span><span class="fv" style="color:#c00000;font-weight:700">Not sanctioned in any jurisdiction as of April 2026</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">1</div><div class="sec-ttl">Role in the Aviation Fuel Supply Chain</div></div>
+  <div class="sec-body">
+
+    <p class="prose">MPE controls the aviation fuel supply chain inside Myanmar through two distinct but simultaneous mechanisms: it co-controls the import and storage infrastructure for aviation fuel brought in from abroad, and it operates the only domestic refinery known to be actively producing aviation turbine fuel for the Myanmar military since the February 2021 coup.</p>
+
+    <div class="subh">The import and storage chain</div>
+
+    <p class="prose">MPE is a joint venture partner in National Energy Prime Aviation Services Co. Ltd. (NEPAS), the entity that holds the licence to import, store and sell aviation fuel in Myanmar. NEPAS is jointly owned by MPE and Shoon Energy Pte. Ltd. (formerly Asia Sun Aviation Pte. Ltd.), a Singapore-registered company that is a subsidiary of the Myanmar crony conglomerate Asia Sun Group Company Limited. NEPAS manages storage and refuelling facilities at 11 airports across Myanmar. (AI Nov 2022; JFM May 2025; JFM Feb 2026)</p>
+
+    <p class="prose">Note on the MPPE–MPE transition: prior to May 2020, aviation fuel import and distribution functions were managed by a predecessor state entity, Myanma Petroleum Product Enterprise (MPPE). MPPE was restructured in May 2020 and replaced by MPE. NEPAS's shareholder registry formally recorded the change from MPPE to MPE on 28 March 2022, though Puma Energy confirmed that MPE was already exercising majority shareholder control from February 2021. Some earlier source documents use the old MPPE name in error. (AI Nov 2022)</p>
+
+    <p class="prose">Following the coup, MPE employees threatened NEPAS staff. According to a source close to Puma Energy, those NEPAS employees who continued to work after February 2021 did so under the constant threat of MPE and the military. Armed soldiers entered the PEAS terminal at Thilawa port on the day of the coup and have remained there. (AI Nov 2022)</p>
+
+    <p class="prose">MPE also co-controls Myan Oil Terminal Company Limited (formerly Puma Energy Asia Sun Company Limited (PEAS)), the physical aviation fuel terminal at Thilawa port, Yangon. That terminal is the offloading point for every aviation fuel shipment to Myanmar documented in this database from 2021 to the present. The terminal is owned by P.E.I. Energy Pte. Ltd. (formerly Puma Energy Irrawaddy Pte. Ltd.), a Singapore-registered Shoon Group entity, and operated in partnership with MPE. (AI Nov 2022; JFM Feb 2026)</p>
+
+    <p class="prose">Puma Energy, the Swiss-Singapore company that operated the Thilawa terminal before the coup as Myanmar's primary aviation fuel supplier, has confirmed that following the coup, MPE ran a tender for the supply and distribution of aviation fuel to the Myanmar Air Force, in which Puma Energy did not participate. This confirms that MPE was not a passive state observer of the post-coup aviation fuel chain: it actively organised military aviation fuel procurement. (AI Nov 2022)</p>
+
+    <p class="prose">In December 2022, following intense public pressure, Puma Energy sold its Myanmar assets to a joint venture between an Asia Sun network company and MPE, transferring the Thilawa terminal entirely into the hands of the military junta and its private-sector crony partner. (UNSR Jun 2024)</p>
+
+    <div class="subh">The domestic refining chain</div>
+
+    <p class="prose">MPE operates the Mann Thanbayarkan petrochemical complex in Magway Region, which receives crude oil extracted from the Chauk and Yenangyaung oilfields in Magway by Goldpetrol Joint Operating Company Inc. The crude is transported by boat along the Ayeyarwady River to the Mann refinery, where it is processed into petroleum products including aviation turbine fuel. MPE's own website, maintained by the junta-controlled Ministry of Electricity and Energy, explicitly lists Aviation Turbine Fuel (ATF) as one of the products manufactured at the Mann Thanbayarkan complex. (JFM Jan 2025; MPE website)</p>
+
+    <p class="prose">The Mann refinery is the only one of MPE's three refineries that has been operational since the coup. It is located in close geographic proximity to Magway Air Force Base and to KaPaSa 13, a military gunpowder manufacturing facility, and it is the facility from which aviation fuel is distributed to Myanmar Air Force bases in Meikhtila, Hmawbi, Nay Pyi Taw, Taungoo and Monywa. (AI Nov 2022; JFM Jan 2025)</p>
+
+    <p class="prose">Myanmar's national statistics agency data confirms that domestic aviation turbine fuel production was 174 percent higher in the first quarter of 2022 than in the same period a year earlier, with output reaching 2 million gallons in the 2021 to 2022 period. See Section 2 for detailed evidence on the nighttime light analysis of the Mann complex. (JFM Jan 2025)</p>
+
+    <div class="callout">
+      <strong>The significance of MPE's dual role:</strong> MPE is the only entity in the Myanmar aviation fuel supply chain that simultaneously controls both import infrastructure and domestic production. Every litre of imported aviation fuel documented in this database has arrived at terminal infrastructure that MPE co-controls. Every litre of domestically refined aviation fuel produced since the coup has passed through a facility that MPE operates. Despite this, MPE is unsanctioned in all five key jurisdictions while every major crony entity in the same network has been designated at least once.
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">2</div><div class="sec-ttl">Evidence</div></div>
+  <div class="sec-body">
+
+    <div class="subh">Aviation fuel delivered to Myanmar Air Force bases, January to August 2022</div>
+
+    <p class="prose">Amnesty International's November 2022 investigation documented the following volumes of aviation fuel delivered from the MPE and Asia Sun co-controlled Thilawa terminal directly to Myanmar Air Force bases between January and August 2022 (air base datasets; NEPAS invoices cover October 2021 to August 2022). These deliveries establish direct military end-use for fuel passing through MPE-controlled infrastructure. A further 37.8 million litres were delivered to NEPAS-managed civilian airports during the same period. (AI Nov 2022)</p>
+
+    <table class="stbl" style="margin-bottom:8px">
+      <tr>
+        <th style="text-align:left;min-width:200px">Air base</th>
+        <th>Volume delivered</th>
+        <th>Period</th>
+      </tr>
+      <tr><td>Taungoo Air Base</td><td>4,712,672 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Nay Pyi Taw Air Base</td><td>4,585,992 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Hmawbi Air Base</td><td>3,247,158 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Meikhtila Air Base (FTB &amp; GTB)</td><td>2,256,633 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Pathein Air Base</td><td>1,217,732 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Myeik Air Base</td><td>392,448 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Nansang Air Base</td><td>346,054 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Monywa Air Base</td><td>90,920 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Myitkyina Air Base</td><td>90,920 litres</td><td>Jan–Aug 2022</td></tr>
+      <tr><td>Magway Air Base</td><td>83,515 litres</td><td>Jan–Aug 2022</td></tr>
+    </table>
+
+    <div class="subh">MPE's own admission of aviation fuel production</div>
+
+    <p class="prose">The junta-controlled Ministry of Electricity and Energy's website lists the Mann Thanbayarkan petrochemical complex under MPE and explicitly states that its products include ATF (Aviation Turbine Fuel). The current operating capacity of the complex is stated as 8,500 barrels per day (approximately 357,000 gallons per day), dependent on available local crude oil. This constitutes an unambiguous public admission by the controlling entity itself that MPE produces aviation fuel at the Mann facility. (MPE website)</p>
+
+    <div class="subh">Puma Energy's confirmation of MPE's post-coup role</div>
+
+    <p class="prose">According to Amnesty International, Puma Energy confirmed to researchers that following the military coup, MPE ran a tender for the supply and distribution of jet fuel to the Myanmar Air Force, in which Puma Energy chose not to participate. This statement establishes that MPE was the organising authority for military aviation fuel procurement in the immediate post-coup period, and that this role was recognised by Puma Energy, the sector's dominant international actor at the time. (AI Nov 2022)</p>
+
+    <div class="subh">The domestic refining chain</div>
+
+    <p class="prose">Justice for Myanmar and Finance Uncovered documented in January 2025 that all crude oil extracted by Goldpetrol Joint Operating Company Inc. from the Chauk and Yenangyaung oilfields is transferred by MOGE to MPE for refining at the Mann Thanbayarkan complex. Goldpetrol is 60 percent owned by SGX-listed Interra Resources Ltd. and 40 percent owned by North Petroleum International Co. Ltd., a subsidiary of the Chinese state-owned arms conglomerate NORINCO. An industry expert analysis of satellite-derived nighttime light data at Mann showed a significant and sustained increase in refinery activity after February 2021, establishing that the coup prompted an acceleration of domestic fuel production. The nighttime light analysis also shows that Mann's activity surge continued until approximately mid-2023, after which nighttime emissions ceased; the Chauk refinery showed a significant decrease throughout the same period. This pattern confirms Mann as the primary source of the domestic production surge and points to a possible decline in Mann's output from mid-2023 onwards, making the imported supply chain increasingly critical thereafter. Myanmar's own national statistics showed that domestic aviation turbine fuel production was 174 percent higher in the first quarter of 2022 than in the same quarter a year earlier. (JFM Jan 2025)</p>
+
+    <div class="subh">MPE did not respond to engagement</div>
+
+    <p class="prose">Following publication of Amnesty International's November 2022 Deadly Cargo investigation, the Business and Human Rights Resource Centre contacted MPE to seek its response to the findings. MPE did not respond. (BHRRC 2022)</p>
+
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">3</div><div class="sec-ttl">Key Relationships</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>NEPAS (National Energy Prime Aviation Services Co. Ltd.; formerly National Energy Puma Aviation Services Co. Ltd.):</strong> MPE is a joint venture partner in NEPAS, the entity licensed to import, store and sell aviation fuel in Myanmar. NEPAS is the formal purchaser and consignee for the majority of aviation fuel shipments documented in this database. The other joint venture partner is Shoon Energy Pte. Ltd. (Singapore). See Profile 1.2. (AI Nov 2022; JFM Feb 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Myan Oil Terminal Company Limited (formerly Puma Energy Asia Sun Company Limited / PEAS; also known as Shoon Energy Thilawa Terminal):</strong> MPE co-controls this terminal at Thilawa port, Yangon. The terminal is owned by P.E.I. Energy Pte. Ltd. (formerly Puma Energy Irrawaddy Pte. Ltd., Singapore) and operated in partnership with MPE. It is the offloading point for every imported aviation fuel shipment in this database. See Profile 1.3. (AI Nov 2022; JFM May 2025)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Asia Sun Group Company Limited (also known as Shoon Group):</strong> The Myanmar crony conglomerate that is MPE's private-sector partner in the NEPAS joint venture and in the co-management of the Thilawa terminal. Following Puma Energy's exit in December 2022, Asia Sun Group and MPE became the sole controlling entities of the entire imported aviation fuel supply chain inside Myanmar. Asia Sun Group is sanctioned by the United States, United Kingdom, European Union, Canada and Australia. See Profile 1.4. (AI Nov 2022; UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>MOGE (Myanma Oil and Gas Enterprise):</strong> The junta-controlled state enterprise that receives crude oil produced by Goldpetrol under improved petroleum recovery contracts and transfers it to MPE for refining at the Mann Thanbayarkan complex. MOGE is sanctioned by the European Union (February 2022) and is subject to a US financial services directive (October 2023). It is not sanctioned by the United Kingdom, Canada or Australia. The EU's February 2022 designation reportedly caused Bank of China to stop transmitting euro-denominated payments to MOGE for Shwe gas exports, with over USD 500 million in revenues placed into escrow accounts and reported to remain outside the junta's reach. MOGE continues to earn at least USD 55 million monthly in Thai Baht revenues as of end 2023, now received via Myanma Economic Bank (MEB). See Profile 9.2. (JFM Jan 2025; UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Goldpetrol Joint Operating Company Inc.:</strong> The joint operating company that extracts crude oil from the Chauk and Yenangyaung oilfields in Magway Region and delivers it by boat along the Ayeyarwady River to the Mann Thanbayarkan complex for refining by MPE. Goldpetrol is 60 percent owned by Interra Resources Ltd. and 40 percent owned by North Petroleum International Co. Ltd. See Profile 9.1. (JFM Jan 2025)</span></div>
+
+    <div class="bul" style="margin-bottom:0"><span class="bul-dot">&bull;</span><span><strong>Mann Thanbayarkan petrochemical complex (MPE-operated refinery, Magway Region):</strong> The only operational MPE refinery since the coup, producing aviation turbine fuel and other petroleum products from crude oil supplied by Goldpetrol via MOGE. Located adjacent to Magway Air Force Base and to KaPaSa 13, a military munitions factory. Aviation fuel produced at Mann is distributed to Myanmar Air Force bases at Meikhtila, Hmawbi, Nay Pyi Taw, Taungoo and Monywa. See Reference Entry 1.8. (AI Nov 2022; JFM Jan 2025; MPE website)</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">4</div><div class="sec-ttl">Designation Status</div></div>
+  <div class="sec-body">
+
+    <table class="stbl">
+      <tr>
+        <th style="min-width:220px;text-align:left">Entity</th>
+        <th style="width:50px">US</th><th style="width:50px">UK</th><th style="width:50px">EU</th><th style="width:60px">Canada</th><th style="width:68px">Australia</th>
+      </tr>
+      <tr>
+        <td>Myanma Petrochemical Enterprise (MPE)<span class="sd">Profiled entity; not designated in any jurisdiction</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Asia Sun Group Company Limited<span class="sd">MPE's private-sector JV partner; fully designated</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Shoon Energy Pte. Ltd. (Singapore)<span class="sd">Formerly Asia Sun Aviation; co-owner of NEPAS with MPE</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td><span class="ck">&#10003;</span></td><td></td>
+      </tr>
+      <tr>
+        <td>P.E.I. Energy Pte. Ltd. (Singapore)<span class="sd">Formerly Puma Energy Irrawaddy; owns Myan Oil Terminal</span></td>
+        <td><span class="ck">&#10003;</span></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>NEPAS<span class="sd">NEPAS JV; licensed aviation fuel importer; not designated</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Swan Energy Company Limited<span class="sd">Asia Sun Group proxy; aviation fuel purchaser</span></td>
+        <td></td><td><span class="ck">&#10003;</span></td><td></td><td><span class="ck">&#10003;</span></td><td></td>
+      </tr>
+      <tr>
+        <td>MOGE (Myanma Oil and Gas Enterprise)<span class="sd">Upstream state partner; transfers crude to MPE</span></td>
+        <td>Directive only</td><td></td><td><span class="ck">&#10003;</span></td><td></td><td></td>
+      </tr>
+    </table>
+
+    <div class="gap-highlight" style="margin-top:10px">
+      <strong>The central sanctions gap:</strong> Every major private-sector entity in the Myanmar aviation fuel supply chain has been sanctioned by at least one jurisdiction. MPE, the state-owned enterprise that co-controls the import infrastructure and operates the domestic refinery, has not been designated anywhere. The UN Special Rapporteur's June 2024 report notes that because both the United Kingdom (21 June 2021) and the European Union (8 November 2022) have sanctioned the State Administration Council (SAC) itself, all Myanmar state-owned enterprises, including MPE, should already be treated as sanctioned entities under the "control" principle in EU and UK sanctions law. Neither government has publicly clarified whether it applies this interpretation to MPE. (UNSR Jun 2024)
+    </div>
+
+    <div class="callout" style="margin-top:8px;font-size:10px">
+      <strong>Note on Canada / Shoon Energy Pte. Ltd.:</strong> Shoon Energy Pte. Ltd. does not appear as a named entry in Canada's Special Economic Measures (Burma) Regulations (SEMA) sanctions list. Canada is marked as sanctioned here because Canada's SEMA regulations include Asia Sun Group Company Limited, of which Shoon Energy Pte. Ltd. is a subsidiary and affiliated company. Under Canadian sanctions law, entities owned or controlled by a designated person or entity are subject to the same prohibitions as the designated entity. Canada's October 2023 aviation fuel ban (SOR/2023-228) also prohibits the export, sale, supply and shipment of aviation fuel, and the provision of shipping insurance, to Myanmar, a prohibition that applies to all actors in the supply chain regardless of individual designation status. Advocates should verify the precise legal basis for any enforcement action under Canadian law.
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">5</div><div class="sec-ttl">Advocacy Interventions to Date</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>November 2022.</strong> Amnesty International publishes Deadly Cargo with research supported by Justice for Myanmar, identifying MPE as co-controller of the aviation fuel supply chain alongside Asia Sun Group and calling on governments to sanction MPE. Amnesty International explicitly states that "MPE contributed to war crimes committed by the Myanmar military." Justice for Myanmar simultaneously publishes a companion press release and target list explicitly naming MPE and calling on Australia, Canada, the European Union, Japan, South Korea, Singapore, the United Kingdom and the United States to urgently sanction MPE. No designation follows. (AI Nov 2022; JFM Nov 2022)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>November 2022.</strong> The Business and Human Rights Resource Centre contacts MPE to seek its response to the Deadly Cargo findings. MPE does not respond. (BHRRC 2022)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>December 2022.</strong> Justice for Myanmar welcomes Canada's first jet fuel sanctions on Asia Sun Group and reiterates the call to sanction MPE, stating that governments should also immediately sanction Myanma Petrochemical Enterprise. No designation of MPE follows. (JFM Dec 2022)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>March 2023.</strong> Justice for Myanmar welcomes US jet fuel sanctions actions and reiterates that MPE controls the jet fuel supply chain, operates the Mann Refinery which produces jet fuel, and jointly owns NEPAS with Shoon, and that MPE, NEPAS and Shoon Energy Thilawa Terminal have not yet been sanctioned in any jurisdiction. No designation follows. (JFM Mar 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>August 2023.</strong> OFAC issues a determination extending Executive Order 14014 to the jet fuel sector of the Burmese economy. This creates the legal authority to sanction any foreign person or entity determined to operate in the jet fuel sector of the Burmese economy, but does not automatically sanction anyone operating in the sector; individual designation requires a further determination by OFAC. Justice for Myanmar calls for coordinated sanctions on MPE and MOGE. No designation of MPE follows. (OFAC Aug 2023; JFM Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>April 2024.</strong> The UN Human Rights Council passes Resolution 55/20 calling on Member States to refrain from the export, sale or transfer of aviation fuel to Myanmar. The resolution is cited by the UN Special Rapporteur as part of the legal and political framework for action on the aviation fuel supply chain and reinforces the international consensus that MPE-linked supply chains must be disrupted. No designation of MPE follows. (UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>June 2024.</strong> The UN Special Rapporteur's Banking on the Death Trade report names MPE as co-controlling partner of the post-Puma aviation fuel infrastructure alongside Asia Sun Group, notes that Myanmar purchased at least USD 80 million in aviation fuel through the international banking system in 2023, and argues that MPE should already be treated as sanctioned under the EU and UK control principles by virtue of existing SAC designations. No designation follows. (UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>January 2025.</strong> Justice for Myanmar and Finance Uncovered publish a joint investigation into the Goldpetrol and Interra Resources domestic crude chain, documenting that MPE receives Goldpetrol's crude oil and refines it at the Mann Thanbayarkan complex into aviation fuel for the Myanmar military. The investigation calls for coordinated sanctions on MOGE, MPE and junta-controlled banks. Interra Resources suspends SGX trading in February 2025 following a Singapore Exchange regulatory inquiry. MPE is not designated. (JFM Jan 2025)</span></div>
+
+    <div class="bul" style="margin-bottom:0"><span class="bul-dot">&bull;</span><span><strong>February 2026.</strong> Justice for Myanmar formally calls on the European Union, United Kingdom, Canada, United States and Australia to impose sanctions on MPE, describing it as the junta's central body for aviation fuel import, storage and distribution. This is the most recent explicit multi-jurisdictional sanctions call for MPE in the source record. No designation follows as of April 2026. (JFM Feb 2026)</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">6</div><div class="sec-ttl">Recommended Actions</div></div>
+  <div class="sec-body">
+
+    <div class="act-bul"><span class="act-dot">&bull;</span><span><strong>Submit sanctions designation evidence to all five jurisdictions:</strong> Submit evidence to the US Office of Foreign Assets Control, UK Office of Financial Sanctions Implementation, EU External Action Service, Canadian Global Affairs sanctions team, and Australian Department of Foreign Affairs and Trade. Evidence should centre on MPE's role as the SAC-controlled co-owner of NEPAS and co-controller of the Myan Oil Terminal; MPE's operation of the Mann Thanbayarkan complex, its own admission of ATF production at that facility, and the documented 174 percent surge in domestic aviation fuel production since the coup; and the direct delivery of aviation fuel from the Thilawa terminal to Myanmar Air Force bases documented by Amnesty International. Each submission should note that MPE is the only entity with control over both the import chain and the domestic refining chain, and that it has been a named sanctions target since November 2022. For submissions to OFAC, the August 2023 jet fuel sector determination under Executive Order 14014 provides the legal authority for MPE's designation, as it extends sanctions authority to any foreign person or entity determined to operate in the jet fuel sector of the Burmese economy. (AI Nov 2022; OFAC Aug 2023)</span></div>
+
+    <div class="act-bul"><span class="act-dot">&bull;</span><span><strong>Use Canada's aviation fuel ban as the model for all other jurisdictions:</strong> Canada is the only government to have banned the export, sale, supply, shipment and insurance of aviation fuel to Myanmar, making it the most advanced jurisdiction in this area and the appropriate model for multilateral coordination. The United States, United Kingdom, European Union and Australia should be urged to replicate Canada's approach. Justice for Myanmar's February 2026 press release explicitly calls on other governments to follow Canada's lead. Advocacy submissions should highlight that Canada's comprehensive approach, combining an export ban with sanctions designations, closes the loopholes that have allowed the supply chain to adapt to partial measures imposed elsewhere. (JFM Feb 2026)</span></div>
+
+    <div class="act-bul"><span class="act-dot">&bull;</span><span><strong>Engage UK and EU authorities on the control principle:</strong> The UN Special Rapporteur has argued that because the SAC itself has been sanctioned by both the EU and the UK, all Myanmar state-owned enterprises, including MPE, should already be treated as sanctioned entities under their respective control principles in EU and UK law. Civil society should formally request that the UK Office of Financial Sanctions Implementation and the EU's relevant directorate issue public guidance on whether MPE is covered by existing SAC designations, or explain publicly why it is not. If existing law already covers MPE, a formal clarification would have immediate practical effect on financial institutions and vessel owners operating in the supply chain. (UNSR Jun 2024)</span></div>
+
+    <div class="act-bul"><span class="act-dot">&bull;</span><span><strong>Use the MPE sanctions gap in engagement with Interra Resources and the SGX:</strong> The ongoing SGX inquiry into Interra Resources and its Goldpetrol joint venture is the most active current leverage point in the domestic crude chain. Advocacy directed at the SGX should explicitly link Interra's oil deliveries to MPE's refining of that oil into aviation fuel at the Mann Thanbayarkan complex, as documented by the JFM and Finance Uncovered investigation. The sanctions gap on MPE should be highlighted as a failure of the regulatory environment that allows an SGX-listed company to supply oil to an unsanctioned state enterprise whose downstream product is aviation fuel for military aircraft. (JFM Jan 2025)</span></div>
+
+    <div class="act-bul" style="margin-bottom:0"><span class="act-dot">&bull;</span><span><strong>Flag MPE's NEPAS joint venture to future trading partners:</strong> Any company that enters into a commercial relationship with NEPAS, the Myan Oil Terminal, or any entity that imports or distributes aviation fuel in Myanmar should be immediately put on notice that NEPAS is jointly owned by MPE, a state enterprise under the control of a junta committing war crimes. This is particularly relevant to shipping agents, P&amp;I insurers, vessel operators and fuel traders who may interact with NEPAS as a named counterparty without recognising its connection to MPE.</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">7</div><div class="sec-ttl">Timeline</div></div>
+  <div class="sec-body">
+    <table class="ttbl">
+      <tr><th style="width:110px">Date</th><th>Event</th></tr>
+      <tr><td>1964</td><td>Myanmar's petroleum sector is nationalised. A state-owned corporation is organised under the name "Petroleum Corporation."</td></tr>
+      <tr><td>1975</td><td>Petroleum Corporation is reorganised into two branches: Petrochemical Industries Corporation and Petroleum Products Corporation.</td></tr>
+      <tr><td>1989</td><td>Petrochemical Industries Corporation is renamed Myanma Petrochemical Enterprise. MPE takes responsibility for the refining, storage and distribution of domestically extracted petrochemical products.</td></tr>
+      <tr><td>1 February 2021</td><td>Military coup in Myanmar. The SAC appoints a new Minister of Electricity and Energy on 2 February 2021, giving the junta direct political control over the ministry that oversees MPE and MOGE. MPE is seized by the junta.</td></tr>
+      <tr><td>February 2021 onwards</td><td>MPE runs a tender for the supply and distribution of jet fuel to the Myanmar Air Force, a tender in which Puma Energy, the incumbent supplier, declines to participate. MPE and Asia Sun Group begin operating as joint controllers of the aviation fuel import and distribution chain. (AI Nov 2022)</td></tr>
+      <tr><td>January to August 2022</td><td>Aviation fuel from the MPE and Asia Sun Group co-controlled Thilawa terminal is delivered directly to ten Myanmar Air Force bases totalling more than 17 million litres (January to August 2022, air base datasets), and 37.8 million litres to NEPAS-managed civilian airports (January to August 2022). NEPAS invoices also document deliveries from October 2021. (AI Nov 2022)</td></tr>
+      <tr><td>Q1 2022</td><td>Myanmar's national statistics agency data shows domestic aviation turbine fuel production was 174 percent higher in Q1 2022 than in Q1 2021, with output reaching 2 million gallons in the 2021 to 2022 period. Industry expert nighttime light analysis attributes this surge to increased activity at the MPE-operated Mann Thanbayarkan complex. (JFM Jan 2025)</td></tr>
+      <tr><td>November 2022</td><td>Amnesty International publishes Deadly Cargo, identifying MPE as co-controller of the aviation fuel supply chain. Justice for Myanmar calls for MPE sanctions and publishes a companion target list. MPE is contacted by the Business and Human Rights Resource Centre and does not respond. (AI Nov 2022; JFM Nov 2022; BHRRC 2022)</td></tr>
+      <tr><td>25 December 2022</td><td>Puma Energy completes the sale of its Myanmar assets, including its interest in the Thilawa terminal, to a joint venture between an Asia Sun Group network company and MPE. MPE and Asia Sun Group become the sole controlling entities of the terminal. (UNSR Jun 2024)</td></tr>
+      <tr><td>December 2022 to present</td><td>All aviation fuel shipments to Myanmar documented in this database arrive at the Thilawa terminal under the co-control of MPE and the Asia Sun Group / Shoon Group network.</td></tr>
+      <tr><td>August 2023</td><td>OFAC issues a determination extending Executive Order 14014 to the jet fuel sector of the Burmese economy. This creates the legal authority to sanction any foreign person or entity determined to operate in the jet fuel sector of the Burmese economy, but does not automatically sanction anyone operating in the sector; individual designation requires a further determination by OFAC. Justice for Myanmar calls for coordinated sanctions on MPE and MOGE. MPE is not designated. (OFAC Aug 2023; JFM Aug 2023)</td></tr>
+      <tr><td>April 2024</td><td>The UN Human Rights Council passes Resolution 55/20 calling on Member States to refrain from the export, sale or transfer of aviation fuel to Myanmar. This reinforces the international legal and political framework for action against MPE and the aviation fuel supply chain. (UNSR Jun 2024)</td></tr>
+      <tr><td>June 2024</td><td>The UN Special Rapporteur's Banking on the Death Trade report names MPE as co-controlling partner of the post-Puma supply chain and notes that Myanmar purchased at least USD 80 million in aviation fuel through the international banking system in 2023. The UNSR argues that MPE should already be treated as sanctioned under the EU and UK control principles by virtue of existing SAC designations. (UNSR Jun 2024)</td></tr>
+      <tr><td>January 2025</td><td>Justice for Myanmar and Finance Uncovered document the domestic crude-to-aviation-fuel chain, establishing that Goldpetrol's crude oil is refined by MPE at the Mann Thanbayarkan complex into aviation fuel. Interra Resources suspends SGX trading in February 2025 following a Singapore Exchange inquiry. MPE is not designated. (JFM Jan 2025)</td></tr>
+      <tr><td>February 2026</td><td>Justice for Myanmar formally calls on the European Union, United Kingdom, Canada, United States and Australia to sanction MPE, describing it as the junta's central body for aviation fuel import, storage and distribution. No designation follows as of April 2026. (JFM Feb 2026)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">8</div><div class="sec-ttl">Sources</div></div>
+  <div class="sec-body">
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Nov 2022)</strong> Amnesty International / Justice for Myanmar, <em>Deadly Cargo: Exposing the Supply Chain that Fuels War Crimes in Myanmar,</em> November 2022. Available at: <a href="https://www.amnesty.org/en/documents/asa16/6147/2022/en/">https://www.amnesty.org/en/documents/asa16/6147/2022/en/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Nov 2022)</strong> Justice for Myanmar, <em>JFM Calls for a Ban on Jet Fuel Exports to Myanmar and Sanctions on Myanmar Jet Fuel Companies,</em> November 2022. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-calls-for-a-ban-on-jet-fuel-exports-to-myanmar-and-sanctions-on-myanmar-jet-fuel-companies">https://www.justiceformyanmar.org/press-releases/jfm-calls-for-a-ban-on-jet-fuel-exports-to-myanmar-and-sanctions-on-myanmar-jet-fuel-companies</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Nov 2022b)</strong> Justice for Myanmar, <em>Myanmar Military Jet Fuel Companies for Targeted Sanctions,</em> November 2022. Available at: <a href="https://www.justiceformyanmar.org/stories/myanmar-military-jet-fuel-companies-for-targeted-sanctions">https://www.justiceformyanmar.org/stories/myanmar-military-jet-fuel-companies-for-targeted-sanctions</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(BHRRC 2022)</strong> Business and Human Rights Resource Centre, <em>Myanma Petrochemical Enterprise: Company Response,</em> 2022. Available at: <a href="https://www.business-humanrights.org/en/companies/myanma-petrochemical-enterprise/">https://www.business-humanrights.org/en/companies/myanma-petrochemical-enterprise/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Dec 2022)</strong> Justice for Myanmar, <em>JFM Welcomes Canadian Sanctions on Myanmar Military Jet Fuel Supplier and Arms Brokers,</em> December 2022. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-welcomes-canadian-sanctions-on-myanmar-military-jet-fuel-supplier-and-arms-brokers">https://www.justiceformyanmar.org/press-releases/jfm-welcomes-canadian-sanctions-on-myanmar-military-jet-fuel-supplier-and-arms-brokers</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Mar 2023)</strong> Amnesty International / Global Witness / Burma Campaign UK, <em>New Shipments of Aviation Fuel Revealed Despite the Military's War Crimes,</em> March 2023. Available at: <a href="https://www.amnesty.org/en/latest/news/2023/03/myanmar-new-shipments-of-aviation-fuel-revealed-despite-the-militarys-war-crimes/">https://www.amnesty.org/en/latest/news/2023/03/myanmar-new-shipments-of-aviation-fuel-revealed-despite-the-militarys-war-crimes/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Mar 2023)</strong> Justice for Myanmar, <em>JFM Welcomes UK and US Sanctions on the Myanmar Junta's Jet Fuel Supply Chain,</em> March 2023. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-welcomes-uk-and-us-sanctions-on-the-myanmar-juntas-jet-fuel-supply-chain">https://www.justiceformyanmar.org/press-releases/jfm-welcomes-uk-and-us-sanctions-on-the-myanmar-juntas-jet-fuel-supply-chain</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jan 2024)</strong> Amnesty International, <em>New Data Suggests Military Still Importing Fuel for Deadly Air Strikes Despite Sanctions,</em> January 2024. Available at: <a href="https://www.amnesty.org/en/latest/news/2024/01/myanmar-new-data-suggests-military-still-importing-fuel-for-deadly-air-strikes-despite-sanctions/">https://www.amnesty.org/en/latest/news/2024/01/myanmar-new-data-suggests-military-still-importing-fuel-for-deadly-air-strikes-despite-sanctions/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jul 2024)</strong> Amnesty International, <em>Reckless Shipments of Jet Fuel Continue as Air Strikes Multiply,</em> July 2024. Available at: <a href="https://www.amnesty.org/en/latest/news/2024/07/myanmar-reckless-shipments-of-jet-fuel-continue-as-air-strikes-multiply/">https://www.amnesty.org/en/latest/news/2024/07/myanmar-reckless-shipments-of-jet-fuel-continue-as-air-strikes-multiply/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(UNSR Jun 2024)</strong> UN Special Rapporteur on the situation of human rights in Myanmar (Tom Andrews), <em>Banking on the Death Trade: How Banks and Governments Enable the Military Junta in Myanmar,</em> A/HRC/56/CRP.7, 26 June 2024. Available at: <a href="https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session56/a-hrc-56-crp-7.pdf">https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session56/a-hrc-56-crp-7.pdf</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Jan 2025)</strong> Justice for Myanmar / Finance Uncovered, <em>The Singapore-Listed Company Fuelling War Crimes in Myanmar,</em> January 2025. Available at: <a href="https://www.justiceformyanmar.org/stories/the-singapore-listed-company-fuelling-war-crimes-in-myanmar">https://www.justiceformyanmar.org/stories/the-singapore-listed-company-fuelling-war-crimes-in-myanmar</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM May 2025)</strong> Justice for Myanmar, <em>Companies in ASEAN Fuelling Myanmar Junta's International Crimes,</em> May 2025. Available at: <a href="https://www.justiceformyanmar.org/stories/companies-in-asean-fuelling-myanmar-juntas-international-crimes">https://www.justiceformyanmar.org/stories/companies-in-asean-fuelling-myanmar-juntas-international-crimes</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jan 2026)</strong> Amnesty International, <em>Jet Fuel Used in Deadly Air Strikes Flowing in on 'Ghost Ships' with Suspected Links to Iran,</em> January 2026. Available at: <a href="https://www.amnesty.org/en/latest/news/2026/01/myanmar-jet-fuel-used-in-deadly-air-strikes-flowing-in-on-ghost-ships-with-suspected-links-to-iran/">https://www.amnesty.org/en/latest/news/2026/01/myanmar-jet-fuel-used-in-deadly-air-strikes-flowing-in-on-ghost-ships-with-suspected-links-to-iran/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(OFAC Aug 2023)</strong> US Department of the Treasury, Office of Foreign Assets Control, <em>Treasury Expands Burma-Related Sanctions and Designates Additional Jet Fuel Suppliers in Burma,</em> 23 August 2023. Available at: <a href="https://home.treasury.gov/news/press-releases/jy1701">https://home.treasury.gov/news/press-releases/jy1701</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Aug 2023)</strong> Justice for Myanmar, <em>JFM Welcomes US Action to Block the Myanmar Junta's Access to Jet Fuel,</em> August 2023. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-welcomes-us-action-to-block-the-myanmar-juntas-access-to-jet-fuel">https://www.justiceformyanmar.org/press-releases/jfm-welcomes-us-action-to-block-the-myanmar-juntas-access-to-jet-fuel</a></span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(JFM Feb 2026)</strong> Justice for Myanmar, <em>Justice for Myanmar Calls for New and Coordinated Sanctions on Junta's Aviation Fuel Supply Chain,</em> February 2026. Available at: <a href="https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain">https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain</a></span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(MPE website)</strong> Myanma Petrochemical Enterprise, official information maintained by the junta-controlled Ministry of Electricity and Energy, listing refineries, products and production capacities. Available at: <a href="https://www.energy.gov.mm/storage/app/media/MPE%20Information.pdf">https://www.energy.gov.mm/storage/app/media/MPE%20Information.pdf</a></span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(energy.gov.mm refineries)</strong> Ministry of Electricity and Energy (junta-controlled), refinery status page, confirming closure dates for No. 1 Refinery (Thanlyin) and No. 2 Refinery (Chauk, March 2019) and operational status of Mann Thanbayarkan complex. Available at: <a href="https://energy.gov.mm/head_office/5">https://energy.gov.mm/head_office/5</a></span></div>
+
+  </div>
+</div>
+
+<div class="bot-rule"></div>
+</div>
+</body>
+</html>

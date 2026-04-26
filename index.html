@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myanmar Jet Fuel Supply Chain Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0d1f3c;
+  --navy-mid: #1e3460;
+  --steel: #3d5a80;
+  --mist: #e8edf4;
+  --paper: #faf9f7;
+  --warm-grey: #ede9e2;
+  --ink: #1a1a1a;
+  --ink-mid: #3a3a3a;
+  --ink-light: #6b6b6b;
+  --rule: #d4cec4;
+  --red: #8b1a1a;
+  --red-mid: #c0392b;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --serif: 'EB Garamond', Georgia, serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  background: var(--navy);
+  padding: 0;
+  border-bottom: 1px solid var(--navy-mid);
+}
+.header-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.site-name {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.header-sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+.search-field {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+}
+.search-field input {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  padding: 9px 16px 9px 40px;
+  color: rgba(255,255,255,0.9);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  letter-spacing: 0.02em;
+}
+.search-field input::placeholder { color: rgba(255,255,255,0.35); }
+.search-field input:focus {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+}
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.header-link {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.15s;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.header-link:hover { color: rgba(255,255,255,0.85); }
+
+/* ─── BODY LAYOUT ─── */
+.page-body {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0 60px;
+  align-items: start;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: sticky;
+  top: 32px;
+  padding-top: 48px;
+}
+.sidebar-section {
+  margin-bottom: 36px;
+}
+.sidebar-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.sidebar-nav a, .sidebar-nav button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 5px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.sidebar-nav a:hover, .sidebar-nav button:hover { color: var(--navy); }
+.sidebar-nav a.active { color: var(--red); font-weight: 500; }
+.sidebar-ref a {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.15s;
+  line-height: 1.35;
+}
+.sidebar-ref a:hover { color: var(--navy); }
+.sidebar-ref a::before {
+  content: '→';
+  font-size: 11px;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+.filter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  transition: color 0.15s;
+}
+.filter-btn:hover { color: var(--navy); }
+.filter-btn.active { color: var(--navy); font-weight: 500; }
+.filter-btn.active-red { color: var(--red); font-weight: 500; }
+.filter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--rule);
+  transition: background 0.15s;
+}
+.filter-btn.active .filter-dot { background: var(--navy); }
+.filter-btn.active-red .filter-dot { background: var(--red); }
+
+/* ─── CONTENT AREA ─── */
+.content {
+  padding-top: 48px;
+  min-width: 0;
+}
+
+/* ─── INTRO ─── */
+.intro {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.intro-date {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+}
+.intro h1 {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.intro p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+  max-width: 680px;
+}
+.intro p:last-child { margin-bottom: 0; }
+
+/* ─── GROUP SECTIONS ─── */
+.group-section { margin-bottom: 44px; }
+.group-section.hidden { display: none; }
+
+.group-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.group-num {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+.group-title {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+}
+
+/* ─── PROFILE LIST ─── */
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.profile-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: baseline;
+  gap: 0 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--warm-grey);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.1s;
+  cursor: pointer;
+}
+.profile-row:hover { background: var(--warm-grey); margin: 0 -16px; padding: 12px 16px; }
+.profile-row.hidden { display: none; }
+.profile-row:last-child { border-bottom: none; }
+
+.row-num {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-light);
+  font-weight: 300;
+}
+.row-name {
+  font-family: var(--serif);
+  font-size: 16.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.row-name em {
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 14px;
+  margin-left: 6px;
+}
+.row-status {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--ink-light);
+  white-space: nowrap;
+  text-align: right;
+}
+.row-status.sanctioned {
+  color: var(--red);
+}
+
+/* ─── NO RESULTS ─── */
+.no-results {
+  display: none;
+  padding: 60px 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+.no-results.visible { display: block; }
+
+/* ─── MODAL ─── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,30,0.65);
+  z-index: 500;
+  backdrop-filter: blur(2px);
+}
+.overlay.open { display: flex; align-items: center; justify-content: center; padding: 40px; }
+.modal {
+  background: var(--paper);
+  max-width: 640px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid var(--rule);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.modal-top-title {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.modal-close {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ink-light);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-body {
+  padding: 28px 32px 36px;
+}
+.modal-body h2 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+.modal-body p {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 14px;
+}
+.modal-body h3 {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin: 24px 0 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+.modal-body ul {
+  padding-left: 0;
+  list-style: none;
+}
+.modal-body ul li {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 6px;
+  padding-left: 18px;
+  position: relative;
+}
+.modal-body ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--ink-light);
+  font-size: 13px;
+}
+
+/* ─── FOOTER ─── */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 24px 40px;
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 860px) {
+  .page-body { grid-template-columns: 1fr; }
+  .sidebar { position: static; padding-top: 24px; }
+  .header-links { display: none; }
+  .header-inner { padding: 14px 20px; }
+  .page-body { padding: 0 20px 60px; }
+  .site-footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="site-name">Myanmar Jet Fuel Supply Chain</span>
+    <div class="header-sep"></div>
+    <div class="search-field">
+      <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5">
+        <circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5 L14 14"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search profiles&hellip;" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="header-links">
+      <a class="header-link" href="Jet_Fuel_Shipment_Table_FINAL.html">Shipment table</a>
+      <a class="header-link" href="Supply_Chain_Entity_Sanctions_TAble.html">Sanctions table</a>
+      <a class="header-link" href="Airstrike_Trackers_FINAL.html">Airstrike trackers</a>
+      <a class="header-link" href="Supply_Chain_Summary_Overview.docx">Overview</a>
+      <button class="header-link" onclick="openModal()">About</button>
+    </div>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Filter</div>
+      <div class="filter-row">
+        <button class="filter-btn active" id="f-all" onclick="setFilter('all')">
+          <span class="filter-dot"></span> All profiles
+        </button>
+        <button class="filter-btn" id="f-sanctioned" onclick="setFilter('sanctioned')">
+          <span class="filter-dot"></span> Sanctioned
+        </button>
+        <button class="filter-btn" id="f-unsanctioned" onclick="setFilter('unsanctioned')">
+          <span class="filter-dot"></span> Unsanctioned
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Supply chain groups</div>
+      <nav class="sidebar-nav" id="groupNav">
+        <button onclick="scrollToGroup('1')" id="nav-g1">Group 1 &mdash; Myanmar Receiving and Distribution Network</button><button onclick="scrollToGroup('2')" id="nav-g2">Group 2 &mdash; Singapore Holding Companies</button><button onclick="scrollToGroup('3')" id="nav-g3">Group 3 &mdash; Thai Trading Companies</button><button onclick="scrollToGroup('4')" id="nav-g4">Group 4 &mdash; Vietnam Transit Hub</button><button onclick="scrollToGroup('5')" id="nav-g5">Group 5 &mdash; Fuel Traders and Upstream Suppliers</button><button onclick="scrollToGroup('6')" id="nav-g6">Group 6 &mdash; Vessels, Vessel Owners and Maritime Service Providers</button><button onclick="scrollToGroup('7')" id="nav-g7">Group 7 &mdash; Transit and Loading Terminals</button><button onclick="scrollToGroup('8')" id="nav-g8">Group 8 &mdash; Financial Facilitators</button><button onclick="scrollToGroup('9')" id="nav-g9">Group 9 &mdash; Domestic Crude-to-Aviation-Fuel Chain</button>
+      </nav>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Reference documents</div>
+      <div class="sidebar-ref">
+        <a href="Jet_Fuel_Shipment_Table_FINAL.html">Master shipment table</a>
+        <a href="Supply_Chain_Entity_Sanctions_TAble.html">Sanctions status table</a>
+        <a href="Airstrike_Trackers_FINAL.html">Airstrike tracker directory</a>
+        <a href="Supply_Chain_Summary_Overview.docx">Supply chain overview</a>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- INTRO -->
+    <div class="intro">
+      <div class="intro-date">Database &mdash; Current to April 2026</div>
+      <h1>Myanmar Jet Fuel Supply Chain</h1>
+      <p>Since the military coup of 1 February 2021, Myanmar's Air Force has conducted thousands of airstrikes against civilians across the country, targeting hospitals, schools, markets, and villages. Every one of those airstrikes has required Jet A-1 aviation fuel. This database documents the international companies, vessels, banks, and individuals who have supplied, transported, financed, or otherwise enabled the flow of that fuel to the Myanmar military.</p>
+      <p>The supply chain has passed through three distinct phases. In the first, major international refiners in Singapore, Thailand, and India sold fuel directly to Myanmar through the Thilawa terminal in Yangon, operated at the time by Puma Energy. When that model was exposed in 2022, the supply chain shifted to routing fuel through Vietnam, using a storage terminal near Ho Chi Minh City to obscure the fuel's final destination. From mid-2024 onwards, Iranian-linked vessels began delivering fuel directly to Myanmar using the tactics of the global ghost fleet: disabling tracking systems, falsifying positions, and loading from Iranian terminals. Imports reached a post-coup high in 2025.</p>
+      <p>The 49 profiles in this database span the full length of the supply chain, from upstream refiners and traders to the terminal operators, shipping companies, and banks that make each delivery possible, and the Myanmar-based entities that receive and distribute the fuel. Each profile sets out what is publicly known about the entity's role, what evidence exists, what advocacy has been attempted, and what governments and financial institutions should do next. The database is intended as a working tool for sanctions authorities, investigative journalists, civil society organisations, and legal teams.</p>
+      <p>The sanctions status of every entity has been verified against the official lists of the United States, United Kingdom, European Union, Canada, and Australia. The database will be updated as new information becomes available.</p>
+    </div>
+
+    <!-- PROFILES (built by JS) -->
+    <div id="profilesContainer"></div>
+    <div class="no-results" id="noResults">No profiles match your search.</div>
+
+  </main>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-top">
+      <span class="modal-top-title">About the database</span>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h2>How to use this database</h2>
+      <p>Each of the 49 profiles follows a consistent structure: an identification section giving registered name, jurisdiction, and role; a role section explaining how the entity fits into the supply chain; an evidence section setting out the primary sources; a key relationships section cross-referencing connected profiles; a designation status table showing sanctions across five jurisdictions; an advocacy section recording what interventions have been attempted and when; recommended actions directed at governments, financial institutions, and civil society; a chronological timeline; and a full source list.</p>
+      <p>Use the search bar to find any entity by name, country, or profile number. Use the filter buttons in the sidebar to show only sanctioned or unsanctioned entities. Click any profile name to open its page.</p>
+      <h3>Evidence standards</h3>
+      <ul>
+        <li>Sanctions data is drawn from official government lists only. An entity shown as unsanctioned has been checked against all five jurisdictions as of April 2026.</li>
+        <li>Shipment data comes from Amnesty International, the UN Special Rapporteur, Reuters, and Global Witness, corroborated by AIS vessel tracking, satellite imagery, and customs records where available.</li>
+        <li>Financial transaction figures come from the UN Special Rapporteur's June 2024 report, based on confidential trade records and rounded to protect sources.</li>
+      </ul>
+      <h3>Nine supply chain groups</h3>
+      <ul>
+        <li><strong>Group 1.</strong> Myanmar Receiving and Distribution Network.</li><li><strong>Group 2.</strong> Singapore Holding Companies.</li><li><strong>Group 3.</strong> Thai Trading Companies.</li><li><strong>Group 4.</strong> Vietnam Transit Hub.</li><li><strong>Group 5.</strong> Fuel Traders and Upstream Suppliers.</li><li><strong>Group 6.</strong> Vessels, Vessel Owners and Maritime Service Providers.</li><li><strong>Group 7.</strong> Transit and Loading Terminals.</li><li><strong>Group 8.</strong> Financial Facilitators.</li><li><strong>Group 9.</strong> Domestic Crude-to-Aviation-Fuel Chain.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-text">Myanmar Jet Fuel Supply Chain Database &mdash; Status current to April 2026</span>
+  <span class="footer-text">49 entity profiles across 9 supply chain groups</span>
+</footer>
+
+<script>
+const PROFILES = [{"num": "1.1", "group": "1", "name": "Myanma Petrochemical Enterprise (MPE)", "file": "1_1_MPE_Profile_FINAL.html", "summary": "Myanma Petrochemical Enterprise (MPE) is the state-owned enterprise illegally seized by Myanmar's military junta on 1 February 2021 that controls the aviation fuel supply chain inside Myanmar. It occu", "sanctions": {"US": "directive", "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "1.2", "group": "1", "name": "National Energy Prime Aviation Services Co. Ltd. (NEPAS)", "file": "1_2_NEPAS_Profile_FINAL.html", "summary": "National Energy Prime Aviation Services Co. Ltd. (NEPAS) is the joint venture between Myanma Petrochemical Enterprise (MPE) and Shoon Energy Pte. Ltd. (Singapore) that holds the licence to import, sto", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "1.3", "group": "1", "name": "Myan Oil Terminal Company Limited", "file": "1_3_Myan_Oil_Terminal_Profile_FINAL.html", "summary": "Myan Oil Terminal Company Limited is the operator of Myanmar's largest petroleum products terminal, located at Thilawa Port, Yangon. The terminal was built from 2014 to 2017 under the name Puma Energy", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "1.4", "group": "1", "name": "Asia Sun Group Company Limited", "file": "1_4_Asia_Sun_Group_Profile_FINAL.html", "summary": "Asia Sun Group Company Limited is the Myanmar crony conglomerate that has served as the private-sector partner to Myanma Petrochemical Enterprise (MPE) in the military junta's aviation fuel supply cha", "sanctions": {"US": true, "UK": true, "EU": true, "Canada": true, "Australia": true}}, {"num": "1.5", "group": "1", "name": "Swan Energy Company Limited", "file": "1_5_Swan_Energy_Profile_FINAL.html", "summary": "Swan Energy Company Limited is a Myanmar-registered company in the Asia Sun Group / Shoon Group network that is one of three Asia Sun Group proxy purchasers of aviation fuel documented in the UN Speci", "sanctions": {"US": false, "UK": true, "EU": false, "Canada": true, "Australia": false}}, {"num": "1.6", "group": "1", "name": "Myan-Oil Company Limited & Rich Ray Trading Company Limited", "file": "1_6_Myan-Oil___Rich_Ray_Trading_Profile_FINAL.html", "summary": "Myan-Oil Company Limited and Rich Ray Trading Company Limited are Myanmar-registered companies documented by the UN Special Rapporteur as Asia Sun Group proxy purchasers of aviation fuel in calendar y", "sanctions": {"US": false, "UK": true, "EU": false, "Canada": false, "Australia": false}}, {"num": "1.7", "group": "1", "name": "Cargo Link Company Limited & Cargo Link Petroleum Logistics Company Limited", "file": "1_7_Cargo_Link_Profile_FINAL.html", "summary": "Cargo Link Company Limited (CLC) is a Myanmar-registered company owned by May Thwe Aung (100%), an Asia Sun Group-affiliated individual, and the corporate parent of Cargo Link Petroleum Logistics Comp", "sanctions": {"US": false, "UK": true, "EU": false, "Canada": true, "Australia": false}}, {"num": "1.8", "group": "1", "name": "Mann Thanbayarkan Petrochemical Complex", "file": "1_8_Mann_Refinery_Profile_FINAL.html", "summary": "The Mann Thanbayarkan Petrochemical Complex (commonly: Mann Refinery), located in Minhla Township, Magway Region, is a military-controlled refinery managed by Myanma Petrochemical Enterprise (MPE) and", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "2.1", "group": "2", "name": "PEIA Pte. Ltd. & P.E.I Energy Pte. Ltd. & Shoon Energy Pte. Ltd.", "file": "2_1_PEI___PEIA___Shoon_Energy_Profile_FINAL.html", "summary": "Shoon Energy Pte. Ltd. and its two subsidiaries, PEIA Pte. Ltd. and P.E.I Energy Pte. Ltd., are Singapore-registered holding companies through which Khin Phyu Win (also known as Kyauk Kyar Shwe and Zh", "sanctions": {"US": true, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "3.1", "group": "3", "name": "CB Energy", "file": "3_1_CB_Energy_Profile_FINAL.html", "summary": "CB Energy is a Thailand-registered company identified by the UN Special Rapporteur on the situation of human rights in Myanmar as the single largest seller of aviation fuel to the Myanmar military's s", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "3.2", "group": "3", "name": "Tawan-Oil Trading", "file": "3_2_Tawan_Oil_Profile_FINAL.html", "summary": "Tawan-Oil Trading is a Thailand-registered company identified by the UN Special Rapporteur on the situation of human rights in Myanmar as one of two Thailand-registered aviation fuel trading companies", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "4.1", "group": "4", "name": "Hai Linh Co. Ltd.", "file": "4_1_Hai_Linh_Profile_FINAL.html", "summary": "Hai Linh Co. Ltd. is a Vietnam-registered private enterprise founded in 1999, principally controlled by Le Van Tam, that owns and operates the Cai Mep Petroleum Terminal near Ho Chi Minh City, and fun", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.10", "group": "5", "name": "National Iranian Oil Refining and Distribution Company and National Iranian Oil Company", "file": "5_10_NIORDC___NIOC_Profile_FINAL.html", "summary": "The National Iranian Oil Refining and Distribution Company (NIORDC) and the National Iranian Oil Company (NIOC) are Iranian state petroleum entities identified by Reuters in January 2026 as the most p", "sanctions": {"US": true, "UK": true, "EU": true, "Canada": false, "Australia": false}}, {"num": "5.11", "group": "5", "name": "Chevron Corporation", "file": "5_11_Chevron_Profile_FINAL.html", "summary": "Chevron Corporation (NYSE: CVX) is a US-headquartered multinational integrated energy company. Chevron is the confirmed supplier of one post-coup aviation fuel shipment to Myanmar: 13,310 MT of Jet A-", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.12", "group": "5", "name": "Thai Oil Public Company Limited", "file": "5_12_Thai_Oil_Profile_FIINAL.html", "summary": "Thai Oil Public Company Limited (Thaioil; SET: TOP) is a Thai integrated refiner and petrochemicals company listed on the Stock Exchange of Thailand and a subsidiary of PTT Group, the Thai state-owned", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.13", "group": "5", "name": "Exxon Mobil Corporation", "file": "5_13_Exxon_Mobil_Profile_FINAL.html", "summary": "Exxon Mobil Corporation (NYSE: XOM) is a US-headquartered multinational integrated oil and gas company. Amnesty International's Deadly Cargo investigation implicates ExxonMobil's Singapore refinery be", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.1", "group": "5", "name": "Puma Energy Holdings Pte. Ltd. & Trafigura Group Pte. Ltd.", "file": "5_1_Puma_Trafigura_Profile_FINAL.html", "summary": "Puma Energy Holdings Pte. Ltd. and its majority shareholder Trafigura Group Pte. Ltd. were, from 2013 to December 2022, the dominant foreign entities in Myanmar's aviation fuel supply chain. Puma Ener", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.2", "group": "5", "name": "BB Energy (Asia) Pte. Ltd.", "file": "5_2_BB_Energy_Profile_FINAL.html", "summary": "BB Energy (Asia) Pte. Ltd. is the Singapore-registered branch of BB Energy, a privately owned independent energy trading company headquartered in Dubai and described by Amnesty International as among ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.3", "group": "5", "name": "Sahara Energy International Pte. Ltd.", "file": "5_3_Sahara_Energy_Profile_FINAL.html", "summary": "Sahara Energy International Pte. Ltd. is the Singapore-registered trading subsidiary of Sahara Group, a privately owned international energy and infrastructure conglomerate with operations across more", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.4", "group": "5", "name": "CNOOC Trading (Singapore) Pte. Ltd.", "file": "5_4_CNOOC_Trading_Profile_FINAL.html", "summary": "CNOOC Trading (Singapore) Pte. Ltd. is the Singapore-registered trading subsidiary of China National Offshore Oil Corporation (CNOOC), the third-largest national oil company in China, which is owned b", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.5", "group": "5", "name": "Bangchak Corporation Public Company Limited", "file": "5_5_Bangchak_Profile_FINAL.html", "summary": "Bangchak Corporation Public Company Limited is a Thai integrated energy company listed on the Stock Exchange of Thailand (SET: BCP). It owns and operates the Bangchak Phra Khanong Refinery at Bangkok ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.6", "group": "5", "name": "Reliance Industries Limited", "file": "5_6_Reliance_Industries_Profile_FINAL.html", "summary": "Reliance Industries Limited is an Indian multinational conglomerate listed on the Bombay Stock Exchange (BSE: 500325) and National Stock Exchange of India (NSE: RELIANCE), and is the largest public co", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.7", "group": "5", "name": "Indian Oil Corporation Limited", "file": "5_7_IOCL_Profile_FINAL.html", "summary": "Indian Oil Corporation Limited (IOCL, also trading as IndianOil) is a Maharatna Public Sector Undertaking listed on the Bombay Stock Exchange (BSE: 530965) and National Stock Exchange of India (NSE: I", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.8", "group": "5", "name": "Singapore Petroleum Company Limited and Singapore Refining Company Private Limited", "file": "5_8_SPC_PetroChina_Profile_FINAL.html", "summary": "Singapore Petroleum Company Limited (SPC) is a Singapore-incorporated petroleum refining, trading and distribution company that has been a wholly owned subsidiary of PetroChina International (Singapor", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "5.9", "group": "5", "name": "Rosneft Oil Company", "file": "5_9_Rosneft_Profile_FINAL.html", "summary": "Rosneft Oil Company (PJSC Rosneft) is a Russian state-controlled integrated energy company and one of the world's largest oil producers, listed on the Moscow Exchange (MCX: ROSN). Amnesty Internationa", "sanctions": {"US": true, "UK": true, "EU": true, "Canada": true, "Australia": true}}, {"num": "6.10", "group": "6", "name": "Pan Ocean Co., Ltd.", "file": "6_10_Pan_Ocean_Profile_FINAL.html", "summary": "Pan Ocean Co., Ltd. is a South Korean global shipping company headquartered in Seoul and listed on the Korea Stock Exchange (KRX: 028670) and the Singapore Exchange (SGX). Pan Ocean is a subsidiary of", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.11", "group": "6", "name": "Prima Marine Public Company Limited", "file": "6_11_Prima_Marine_Profile_FINAL.html", "summary": "Prima Marine Public Company Limited (SET: PRM) is a Thai marine transportation company headquartered in Bangkok, Thailand, and a subsidiary of Nathalin Group Co., Ltd. Prima Marine is the beneficial o", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.1", "group": "6", "name": "HUITONG 78 (now BARAAWE 1)", "file": "6_1_HUITONG78_BARAAWE1_Profile_FINAL.html", "summary": "The vessel known during its documented deliveries as HUITONG 78, now renamed BARAAWE 1, is an oil products tanker (IMO 9646479) that carried at least nine confirmed shipments of Jet A-1 aviation fuel ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.2", "group": "6", "name": "Abu Marine Co. Ltd. and Pacific Light Operation and Ship Management", "file": "6_2_Abu_Marine___Pacific_Light_Profile_FINAL.html", "summary": "Abu Marine Co. Ltd., domiciled in the Marshall Islands, is the registered owner of BARAAWE 1 (formerly HUITONG 78, IMO 9646479), the oil products tanker that carried at least nine confirmed shipments ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.3", "group": "6", "name": "YONG SHENG 56 (now LS MERCURY)", "file": "6_3_YONG_SHENG56_-_LSMERCURY_Profile_FINAL.html", "summary": "The vessel known during its documented delivery as YONG SHENG 56, now renamed LS MERCURY, is a Chinese-flagged oil products tanker (IMO 9657507) that made one confirmed delivery of aviation fuel to My", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.4", "group": "6", "name": "Legendsea Co. Ltd. and Allsea Management JSC", "file": "6_4_Legendsea_Allsea_Profile_FINAL.html", "summary": "Legendsea Co. Ltd. and Allsea Management JSC are Vietnamese-domiciled entities identified by Justice For Myanmar in its February 2026 sanctions press release as the registered owner and dual commercia", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.5", "group": "6", "name": "REEF (formerly BALTIC HORIZON / PETRA)", "file": "6_5_REEF_Profile_FINAL.html", "summary": "REEF (IMO 9263382), formerly known as BALTIC HORIZON and before that PETRA, is a Guinea-flagged chemical/oil products tanker that made four confirmed deliveries of aviation fuel to Myanmar's military ", "sanctions": {"US": true, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.6", "group": "6", "name": "NOBLE (formerly ASTRA / TRAA3 / HURON)", "file": "6_6_NOBLE_Profile_FINAL.html", "summary": "NOBLE (IMO 9162928), formerly known as ASTRA and before that TRAA3 and HURON, is a Guinea-flagged chemical/oil products tanker that made four confirmed deliveries of aviation fuel to Myanmar's militar", "sanctions": {"US": true, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.7", "group": "6", "name": "Sea Route Ship Management FZE", "file": "6_7_Sea_Route_Profile_FINAL.html", "summary": "Sea Route Ship Management FZE is a UAE-registered ship management company domiciled in the Hamriyah Free Zone, Sharjah, that serves as the ISM manager and commercial manager of both REEF (IMO 9263382,", "sanctions": {"US": true, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.8", "group": "6", "name": "Amethyst Maritime Ventures SA and Sea Hill Maritime SA", "file": "6_8_Amethyst___Sea_Hill_Profile_FINAL.html", "summary": "Amethyst Maritime Ventures SA and Sea Hill Maritime SA are UAE-domiciled entities registered in the Hamriyah Free Zone, Sharjah, that are the registered owners of REEF (IMO 9263382, Profile 6.5) and N", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "6.9", "group": "6", "name": "Wilhelmsen Ships Service Myanmar Ltd.", "file": "6_9_Wilhelmsen_Profile_FINAL.html", "summary": "Wilhelmsen Ships Service Myanmar Ltd. (WSS Myanmar) is the Myanmar subsidiary of Wilh. Wilhelmsen Holding ASA, a Norwegian maritime group headquartered in Lysaker, Norway. WSS Myanmar acted as shippin", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "7.1", "group": "7", "name": "Royal Vopak: Pengerang Independent Terminals and Vopak Singapore Banyan Terminal", "file": "7_1_Vopak_Profile_FINAL.html", "summary": "Royal Vopak NV is a Netherlands-headquartered tank storage company and the world's largest independent tank storage operator. It holds an effective stake of approximately 44% in Pengerang Independent ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "7.2", "group": "7", "name": "Fujairah Offshore Anchorage Area (FOAA) and Hamriyah Port, Sharjah", "file": "7_2_FOAA___Hamriyah_Profile_FINAL.html", "summary": "The Fujairah Offshore Anchorage Area (FOAA) and Hamriyah Port in Sharjah are two distinct maritime locations in the United Arab Emirates linked to six aviation fuel shipments to Myanmar's military jun", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "7.3", "group": "7", "name": "BP Hua Dong Terminal, Ningbo, China", "file": "7_3_BP_Hua_Dong_Profile_FINAL.html", "summary": "The BP Hua Dong terminal at Ningbo port, Hangzhou Bay, China is the upstream load point for the February 2024 aviation fuel shipment to Myanmar's military junta, as documented by Amnesty International", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "7.4", "group": "7", "name": "CNOOC Terminal, Huizhou, China", "file": "7_4_CNOOC_Huizhou_Profile_FINAL.html", "summary": "China National Offshore Oil Corporation (CNOOC) is China's third-largest national oil company and a state-owned enterprise directly owned by the State Council through the State-owned Assets Supervisio", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "8.1", "group": "8", "name": "United Amara Bank (UAB)", "file": "8_1_UAB_Profile_FINAL.html", "summary": "United Amara Bank (UAB) is a private Myanmar bank identified by the United Nations Special Rapporteur on the situation of human rights in Myanmar in June 2024 as the domestic financial intermediary th", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "8.2", "group": "8", "name": "Krung Thai Bank Public Company Limited", "file": "8_2_Krung_Thai_Bank_Profile_FINAL.html", "summary": "Krung Thai Bank Public Company Limited (KTB) is a Thai state-owned commercial bank whose majority shareholder is the Thai Ministry of Finance. It is identified by Justice For Myanmar's May 2025 report", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "8.3", "group": "8", "name": "Myanma Economic Bank (MEB)", "file": "8_3_MEB_Profile_FINAL.html", "summary": "Myanma Economic Bank (MEB) is a Myanmar state-owned bank that became the primary conduit for military procurement conducted through state-owned financial institutions following the imposition of US sa", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": true, "Australia": false}}, {"num": "8.4", "group": "8", "name": "Myanma Foreign Trade Bank (MFTB) and Myanma Investment and Commercial Bank (MICB)", "file": "8_4_MFTB_MICB_Profile_FINAL.html", "summary": "Myanma Foreign Trade Bank (MFTB) and Myanma Investment and Commercial Bank (MICB) are Myanmar state-owned banks that served as the junta's primary foreign currency exchange conduits and principal gate", "sanctions": {"US": true, "UK": false, "EU": false, "Canada": true, "Australia": true}}, {"num": "8.5", "group": "8", "name": "Kasikorn Bank Public Company Limited", "file": "8_5_Kasikorn_Profile_FINAL.html", "summary": "Kasikorn Bank Public Company Limited (KBank) is a Thai publicly listed commercial bank headquartered in Bangkok. It appears in two distinct but related capacities in the documented Myanmar aviation fu", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "9.1", "group": "9", "name": "Interra Resources Ltd and Goldpetrol Joint Operating Company Inc.", "file": "9_1_Interra_Goldpetrol_Profile_FINAL.html", "summary": "Interra Resources Ltd is a Singapore-listed petroleum exploration company that holds a 60 percent stake in Goldpetrol Joint Operating Company Inc. (GJOC), one of the few remaining onshore oil producer", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "9.2", "group": "9", "name": "Myanma Oil and Gas Enterprise (MOGE)", "file": "9_2_MOGE_Profile_FINAL.html", "summary": "Myanma Oil and Gas Enterprise (MOGE) is the junta-controlled state oil enterprise that sits at the centre of Myanmar's domestic crude-to-aviation-fuel chain. As the designated holder of all oil and ga", "sanctions": {"US": "directive", "UK": false, "EU": true, "Canada": false, "Australia": false}}, {"num": "9.3", "group": "9", "name": "North Petroleum International Co. Ltd. and China North Industries Group Corporation Limited (NORINCO)", "file": "9_3_NPI_NORINCO_Profile_FINAL.html", "summary": "North Petroleum International Co. Ltd. is a subsidiary of China ZhenHua Oil Co. Ltd., which is itself a subsidiary of China North Industries Group Corporation Limited (NORINCO), a Chinese state-owned ", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}, {"num": "9.4", "group": "9", "name": "Indian Oil Corporation Limited (IOCL)", "file": "9_4_IOCL_Profile_FINAL.html", "summary": "Indian Oil Corporation Limited (IOCL, also trading as IndianOil) is a Maharatna Public Sector Undertaking under the ownership and administrative control of India's Ministry of Petroleum and Natural Ga", "sanctions": {"US": false, "UK": false, "EU": false, "Canada": false, "Australia": false}}];
+const GROUP_LABELS = {"1": "Myanmar Receiving and Distribution Network", "2": "Singapore Holding Companies", "3": "Thai Trading Companies", "4": "Vietnam Transit Hub", "5": "Fuel Traders and Upstream Suppliers", "6": "Vessels, Vessel Owners and Maritime Service Providers", "7": "Transit and Loading Terminals", "8": "Financial Facilitators", "9": "Domestic Crude-to-Aviation-Fuel Chain"};
+let currentFilter = 'all';
+let currentSearch = '';
+
+function buildUI() {
+  const container = document.getElementById('profilesContainer');
+  ['1','2','3','4','5','6','7','8','9'].forEach(g => {
+    const gp = PROFILES.filter(p => p.group === g);
+    if (!gp.length) return;
+    const section = document.createElement('div');
+    section.className = 'group-section';
+    section.id = `group-${g}`;
+    section.dataset.group = g;
+    const heading = document.createElement('div');
+    heading.className = 'group-heading';
+    heading.innerHTML = `<span class="group-num">Group ${g}</span><span class="group-title">${GROUP_LABELS[g]}</span>`;
+    section.appendChild(heading);
+    const list = document.createElement('div');
+    list.className = 'profile-list';
+    gp.forEach(p => {
+      const hasSanctions = Object.values(p.sanctions).some(v => v);
+      const row = document.createElement('a');
+      row.className = 'profile-row';
+      row.href = p.file;
+      row.dataset.group = p.group;
+      row.dataset.sanctioned = hasSanctions ? '1' : '0';
+      row.dataset.search = (p.name + ' ' + p.num + ' ' + p.summary).toLowerCase();
+      const statusText = hasSanctions ? 'Sanctioned' : '';
+      row.innerHTML = `
+        <span class="row-num">${p.num}</span>
+        <span class="row-name">${p.name}</span>
+        <span class="row-status ${hasSanctions ? 'sanctioned' : ''}">${statusText}</span>
+      `;
+      list.appendChild(row);
+    });
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+function applyFilters() {
+  const rows = document.querySelectorAll('.profile-row');
+  const sections = document.querySelectorAll('.group-section');
+  let visible = 0;
+  rows.forEach(row => {
+    const matchS = !currentSearch || row.dataset.search.includes(currentSearch);
+    const matchF = currentFilter === 'all'
+      || (currentFilter === 'sanctioned' && row.dataset.sanctioned === '1')
+      || (currentFilter === 'unsanctioned' && row.dataset.sanctioned === '0');
+    const show = matchS && matchF;
+    row.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  sections.forEach(s => {
+    s.classList.toggle('hidden', !s.querySelectorAll('.profile-row:not(.hidden)').length);
+  });
+  document.getElementById('noResults').classList.toggle('visible', visible === 0);
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.getElementById('f-all').className = 'filter-btn' + (f==='all' ? ' active' : '');
+  document.getElementById('f-sanctioned').className = 'filter-btn' + (f==='sanctioned' ? ' active-red' : '');
+  document.getElementById('f-unsanctioned').className = 'filter-btn' + (f==='unsanctioned' ? ' active' : '');
+  applyFilters();
+}
+
+function scrollToGroup(g) {
+  const el = document.getElementById('group-' + g);
+  if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function openModal() { document.getElementById('overlay').classList.add('open'); }
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentSearch = e.target.value.toLowerCase().trim();
+  applyFilters();
+});
+
+buildUI();
+</script>
+</body>
+</html>
