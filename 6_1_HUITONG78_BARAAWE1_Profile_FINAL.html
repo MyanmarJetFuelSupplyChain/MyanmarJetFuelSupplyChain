@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>HUITONG 78 / BARAAWE 1, Profile 6.1</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e0e0dc;padding:20px;font-family:'Georgia',serif}
+.page{background:#fff;width:100%;max-width:820px;margin:0 auto;border:1px solid #999;font-size:12px;color:#111}
+.entity-block{padding:15px 18px 13px;border-bottom:2px solid #0d1f3c}
+.entity-name{font-family:'Arial',sans-serif;font-size:19px;font-weight:700;color:#0d1f3c;line-height:1.2;letter-spacing:-0.2px;text-align:center}
+.entity-aka{font-family:'Arial',sans-serif;font-size:10.5px;color:#444;font-style:italic;margin-top:3px;text-align:center;letter-spacing:1px;text-transform:uppercase}
+.summary{padding:12px 18px;background:#f6f7f9;border-bottom:1px solid #aab}
+.sum-lbl{font-family:'Arial',sans-serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#0d1f3c;font-weight:700;margin-bottom:5px}
+.sum-txt{font-family:'Georgia',serif;font-size:11px;line-height:1.8;color:#222;text-align:justify;font-style:italic}
+.sec-hd{display:flex;align-items:stretch;border-top:2px solid #2a4070;border-bottom:1px solid #2a4070}
+.sec-num{background:#0d1f3c;color:#fff;font-family:'Arial',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 9px;min-width:28px;display:flex;align-items:center;justify-content:center}
+.sec-ttl{background:#e8ecf2;border-left:1px solid #2a4070;padding:5px 12px;font-family:'Arial',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0d1f3c;display:flex;align-items:center}
+.sec-body{padding:10px 18px 13px}
+.field{display:flex;gap:0;margin-bottom:3px;font-size:11px;line-height:1.5}
+.fl{font-family:'Arial',sans-serif;font-weight:700;min-width:190px;color:#0d1f3c;font-size:10px;padding-top:1px}
+.fv{color:#222;font-size:11px}
+.prose{font-size:11px;line-height:1.75;color:#222;text-align:justify;margin-bottom:8px}
+.prose:last-child{margin-bottom:0}
+.bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.bul-dot{color:#0d1f3c;font-size:14px;line-height:1.2;flex-shrink:0;margin-top:1px}
+.stbl{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:10px;margin-top:6px}
+.stbl th{background:#0d1f3c;color:#fff;padding:6px 8px;font-size:8.5px;font-weight:700;letter-spacing:1px;text-align:center;border:1px solid #2a4070}
+.stbl th:first-child{text-align:left;padding-left:10px}
+.stbl td{padding:6px 8px;border:1px solid #c8cdd8;text-align:center;vertical-align:top}
+.stbl td:first-child{text-align:left;padding-left:10px;color:#0d1f3c;font-weight:700;font-size:10.5px}
+.sd{display:block;font-size:8.5px;color:#666;font-style:italic;font-weight:400;margin-top:1px}
+.stbl tr:nth-child(even) td{background:#f4f6f9}
+.dtbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:6px}
+.dtbl th{background:#0d1f3c;color:#fff;padding:5px 8px;font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:0.8px;border:1px solid #2a4070;text-align:center}
+.dtbl th:first-child{text-align:left;padding-left:10px}
+.dtbl td{padding:5px 8px;border:1px solid #c8cdd8;vertical-align:top;line-height:1.5;font-size:10.5px;text-align:center}
+.dtbl td:first-child{text-align:left;padding-left:10px;font-weight:700;color:#0d1f3c;white-space:nowrap}
+.dtbl tr:nth-child(even) td{background:#f4f6f9}
+.fn{font-size:9px;color:#666;font-style:italic}
+.ttbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:4px}
+.ttbl th{background:#0d1f3c;color:#fff;padding:6px 10px;font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;border:1px solid #2a4070}
+.ttbl td{padding:6px 10px;border:1px solid #c8cdd8;vertical-align:top;line-height:1.55}
+.ttbl td:first-child{font-family:'Arial',sans-serif;font-weight:700;color:#0d1f3c;font-size:10px;white-space:nowrap;width:130px}
+.ttbl tr:nth-child(even) td{background:#f4f6f9}
+.act-bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.act-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:1px}
+.src-bul{display:flex;align-items:flex-start;gap:6px;font-size:10.5px;line-height:1.6;margin-bottom:4px;color:#222}
+.src-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:0}
+.callout{background:#fffbf0;border-left:3px solid #c08000;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.bot-rule{height:4px;background:#0d1f3c}
+a{color:#0d1f3c}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ENTITY HEADER -->
+<div class="entity-block">
+  <div class="entity-name">HUITONG 78 (now BARAAWE 1)</div>
+  <div class="entity-aka">Profile 6.1</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-lbl">Summary Assessment</div>
+  <div class="sum-txt">HUITONG 78 (IMO 9646479), now renamed BARAAWE 1, carried nine confirmed and one assessed Jet A-1 deliveries to Myanmar between May 2023 and July 2024. Eight loaded at the Cai Mep Petroleum Terminal in Vietnam; the final confirmed delivery staged at the FOAA anchorage in Fujairah, UAE. Chinese-flagged throughout the documented period, it continued operating after being publicly identified by Amnesty International in January 2024. The West of England P&amp;I Club confirmed ownership by a CASIC affiliate and stated no insurance cover applied to Myanmar jet fuel trades. The vessel was subsequently renamed BARAAWE 1, re-flagged to St Kitts and Nevis, and its AIS was deactivated during offloading at Thilawa. Abu Marine Co. Ltd. (Marshall Islands) is the registered owner and Pacific Light Operation and Ship Management (UAE) is the ISM manager. Neither the vessel, its owner, nor its manager has been sanctioned by any government in connection with Myanmar as of April 2026.</div>
+</div>
+
+<!-- IDENTIFICATION -->
+<div>
+  <div class="sec-hd"><div class="sec-num">ID</div><div class="sec-ttl">Identification</div></div>
+  <div class="sec-body">
+    <div class="field"><span class="fl">Current name:</span><span class="fv">BARAAWE 1</span></div>
+    <div class="field"><span class="fl">Former names:</span><span class="fv">HUITONG 78 (also written HUITONG78 and MT. HUITONG 78); ZHOU HAI YOU 78. Name history (chronological): ZHOU HAI YOU 78 (from build, 2012); HUITONG 78 (from September 2022, per vessel tracking databases); BARAAWE 1 (from November 2024, per vessel tracking databases, approximately four months after the vessel's final documented Myanmar delivery in July 2024). The vessel operated as HUITONG 78 throughout all documented Myanmar deliveries.</span></div>
+    <div class="field"><span class="fl">IMO number:</span><span class="fv">9646479 (permanent identifier, unchanged across name and flag changes)</span></div>
+    <div class="field"><span class="fl">MMSI:</span><span class="fv">341987001</span></div>
+    <div class="field"><span class="fl">Type:</span><span class="fv">Oil products tanker. Length overall: 126 metres. Beam: 20 metres. Summer deadweight: 12,476 DWT. Classified Tanker/Small/Epoxy. (Vessel tracking databases)</span></div>
+    <div class="field"><span class="fl">Built:</span><span class="fv">2012</span></div>
+    <div class="field"><span class="fl">Flag during deliveries:</span><span class="fv">China (Chinese-flagged throughout all documented Myanmar deliveries, May 2023 to July 2024, confirmed by Amnesty International Jan 2026). The flag change to St Kitts and Nevis occurred between July and November 2024.</span></div>
+    <div class="field"><span class="fl">Current flag:</span><span class="fv">St Kitts and Nevis. Callsign: V4NF6. Confirmed across multiple independent vessel tracking platforms as of March 2026.</span></div>
+    <div class="field"><span class="fl">Registered owner (as of JFM Feb 2026):</span><span class="fv">Abu Marine Co. Ltd., domiciled in the Marshall Islands. See Profile 6.2.</span></div>
+    <div class="field"><span class="fl">ISM manager (as of JFM Feb 2026):</span><span class="fv">Pacific Light Operation and Ship Management, domiciled in the UAE. See Profile 6.2.</span></div>
+    <div class="field"><span class="fl">Ownership at time of deliveries:</span><span class="fv">Per the West of England P&amp;I Club (July 2024), owned by an affiliate of China Aerospace Science and Industry Corp (CASIC), a Chinese state-owned defence company. Amnesty International was unable to confirm ownership independently at time of its January 2024 publication.</span></div>
+    <div class="field"><span class="fl">P&amp;I insurance:</span><span class="fv">West of England P&amp;I Club (confirmed as insurer at time of AI Jul 2024 publication).</span></div>
+    <div class="field"><span class="fl">Role in supply chain:</span><span class="fv">Primary transport vessel for Myanmar aviation fuel deliveries in 2023 and 2024. Carried at least nine confirmed jet fuel shipments and one likely additional shipment (assessed as "quite likely" aviation fuel). All confirmed deliveries loaded at the Hai Linh Cai Mep Petroleum Terminal, Vietnam, before proceeding to the former PEAS terminal (Shoon Energy management) or Myan Oil Terminal at Thilawa, Yangon. See the delivery table in Section 1.</span></div>
+    <div class="field"><span class="fl">Designation status:</span><span class="fv" style="color:#c00000;font-weight:700">Not sanctioned by any government.</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">1</div><div class="sec-ttl">Documented Delivery Record</div></div>
+  <div class="sec-body">
+
+    <p class="prose">The table below documents all ten HUITONG 78 / BARAAWE 1 deliveries to Myanmar recorded across three Amnesty International investigations. For cross-reference with the master shipment table, these correspond to rows 12 through 21. Row 9 in the table below (marked &#9733;) is the only entry where aviation fuel could not be confirmed as the cargo type.</p>
+
+    <table class="dtbl">
+      <tr>
+        <th>No.</th><th>Vessel</th><th>IMO</th><th>Arrival date</th><th>Load port</th><th>Offloading terminal</th><th>Volume</th><th>Source</th>
+      </tr>
+      <tr><td>1</td><td>HUITONG 78</td><td>9646479</td><td>4 May 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam</td><td>Shoon Energy, Thilawa</td><td>10.00 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>2</td><td>HUITONG 78</td><td>9646479</td><td>26 May 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam (via Pengerang, Malaysia)</td><td>Shoon Energy, Thilawa</td><td>9.99 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>3</td><td>HUITONG 78</td><td>9646479</td><td>16 Jun 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam</td><td>Shoon Energy, Thilawa</td><td>5.01 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>4</td><td>HUITONG 78</td><td>9646479</td><td>7 Jul 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam</td><td>Shoon Energy, Thilawa</td><td>10.09 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>5</td><td>HUITONG 78</td><td>9646479</td><td>15 Aug 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam (via CNOOC terminal, Huizhou, China)</td><td>Shoon Energy, Thilawa</td><td>9.91 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>6</td><td>HUITONG 78</td><td>9646479</td><td>20 Dec 2023</td><td>Hai Linh terminal, Cai Mep, Vietnam</td><td>Shoon Energy, Thilawa</td><td>9.81 kt</td><td>Amnesty (Jan 2024)</td></tr>
+      <tr><td>7</td><td>HUITONG 78</td><td>9646479</td><td>14 Jan 2024</td><td>Hai Linh terminal, Cai Mep, Vietnam (via Vopak Singapore Banyan Terminal)</td><td>Shoon Energy, Thilawa</td><td>~USD 8M value</td><td>Amnesty (Jul 2024)</td></tr>
+      <tr><td>8</td><td>HUITONG 78</td><td>9646479</td><td>29 Feb 2024</td><td>Hai Linh terminal, Cai Mep, Vietnam (via BP Hua Dong terminal, Ningbo, China)</td><td>Shoon Energy, Thilawa</td><td>~USD 8M value</td><td>Amnesty (Jul 2024)</td></tr>
+      <tr><td>9 &#9733;</td><td>HUITONG 78</td><td>9646479</td><td>~12 May 2024</td><td>Hamriyah port, Sharjah, UAE</td><td>Former Puma Energy terminal, Thilawa</td><td>Not confirmed</td><td>Amnesty (Jul 2024)</td></tr>
+      <tr><td>10</td><td>HUITONG 78 / BARAAWE 1</td><td>9646479</td><td>12 Jul 2024</td><td>FOAA, Fujairah, UAE (sighted 13-26 Jun 2024)</td><td>Myan Oil terminal, Yangon</td><td>Not confirmed</td><td>Amnesty (Jan 2026)</td></tr>
+    </table>
+
+    <p class="prose" style="margin-top:8px"><strong>Table notes</strong></p>
+    <p class="prose"><strong>Fuel type:</strong> All rows except row 9 are confirmed Jet A-1 aviation fuel deliveries. Row 9 (marked &#9733;) is the only shipment where cargo type could not be confirmed: Amnesty International July 2024 confirmed the vessel's presence and draught change at Thilawa by satellite imagery but assessed the cargo as "quite likely" aviation fuel without documentary confirmation.</p>
+    <p class="prose"><strong>Volume:</strong> Rows 7 and 8 are expressed as approximate USD values (~USD 8 million each) per Vietnamese customs data, as Amnesty International did not report metric tonnages for those deliveries. Rows 9 and 10 are unconfirmed on volume.</p>
+    <p class="prose"><strong>Total:</strong> 10 documented HUITONG 78 / BARAAWE 1 shipments to Myanmar: 9 confirmed Jet A-1 deliveries and 1 likely delivery where fuel type was not confirmed (row 9).</p>
+
+    <p class="prose">The six 2023 deliveries (rows 1-6) account for a combined confirmed volume of 54.81 kilotonnes of Jet A-1 aviation fuel. The two confirmed 2024 deliveries (rows 7 and 8) each had a commercial value of approximately USD 8 million; metric tonne volumes were not confirmed in the source. Deliveries 9 and 10 occurred after Amnesty International's January 2024 investigation had publicly named HUITONG 78 as the primary vessel in the supply chain. (AI Jan 2024; AI Jul 2024; AI Jan 2026)</p>
+
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">2</div><div class="sec-ttl">Supply Chain Role and Methodology</div></div>
+  <div class="sec-body">
+
+    <p class="prose">HUITONG 78 was the primary delivery vessel for the Vietnamese transit supply chain, carrying six of the seven 2023 shipments and both confirmed early 2024 shipments. Every 2023 delivery loaded at the Cai Mep Petroleum Terminal operated by Hai Linh Co. Ltd., sometimes preceded by a stop at Pengerang (Malaysia), the CNOOC Huizhou terminal (China), the Vopak Singapore Banyan Terminal, or the BP Hua Dong terminal in Ningbo. The multi-hop routing was designed to obscure the fuel's origin and diffuse liability among multiple intermediaries. (AI Jan 2024; AI Jul 2024)</p>
+
+    <p class="prose">After being named publicly in January 2024 as the primary vessel in the supply chain, HUITONG 78 continued making deliveries. The July 2024 delivery staged at the FOAA anchorage in Fujairah rather than Vietnam, marking the transition to Phase 3 ghost fleet tactics. AIS was deactivated during offloading at Thilawa. Amnesty International's Secretary General stated: "The Myanmar military is relying on the very same Chinese vessel and Vietnamese companies to import its aviation fuel, despite Amnesty International having already exposed that reckless supply chain." (AI Jul 2024; AI Jan 2026)</p>
+
+</div>
+</div>
+
+<!-- SECTION 3 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">3</div><div class="sec-ttl">Ownership and Insurance</div></div>
+  <div class="sec-body">
+
+    <p class="prose">At the time of Amnesty International's July 2024 investigation, the West of England P&amp;I Club confirmed the vessel was owned by an affiliate of China Aerospace Science and Industry Corp (CASIC), a Chinese state-owned defence company. The Club stated that if the vessel was carrying jet fuel to Myanmar "then there was no cover for those trades." Justice for Myanmar's February 2026 call identified Abu Marine Co. Ltd. (Marshall Islands) as the registered owner and Pacific Light Operation and Ship Management (UAE) as the ISM manager. The relationship between Abu Marine and the CASIC affiliate identified by the West of England Club has not been established in any reviewed source. (AI Jul 2024; JFM Feb 2026)</p>
+
+</div>
+</div>
+
+<!-- SECTION 4 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">4</div><div class="sec-ttl">Sanctions Evasion Behaviours</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Continued operation after public exposure.</strong> Named publicly in January 2024, the vessel made four further documented deliveries before ceasing its documented Myanmar role. (AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>AIS deactivation during offloading.</strong> AIS was turned off as the vessel entered Thilawa during the May and July 2024 deliveries. (AI Jul 2024; AI Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Renaming and re-flagging.</strong> Following exposure across multiple investigations, the vessel was renamed HUITONG 78 to BARAAWE 1 and re-flagged from China to St Kitts and Nevis. Its IMO number (9646479) is unchanged. (AI Jan 2026; JFM Feb 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Multi-hop routing.</strong> Fuel was routed through storage terminals in Malaysia, Singapore, and China before the Cai Mep terminal in Vietnam to mask its origin and diffuse legal liability. (AI Jan 2024; AI Jul 2024)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 5 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">5</div><div class="sec-ttl">Key Relationships</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Hai Linh Co. Ltd. (Vietnam):</strong> Operator of the Cai Mep Petroleum Terminal, which served as the final load port for eight of the nine confirmed HUITONG 78 deliveries: all confirmed 2023 deliveries and the first two confirmed 2024 deliveries (shipments 1-8). The final confirmed delivery in July 2024 (shipment 10) loaded at the FOAA anchorage in Fujairah, UAE. See Profile 4.1. (AI Jan 2024; AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Sahara Energy International Pte. Ltd. (Singapore):</strong> Identified as the trader who sold jet fuel to a Vietnamese company for the January 2024 delivery (shipment 7). Customs data indicated Sahara Energy should have been aware the fuel was transported to Vietnam for transit purposes only. See Profile 5.3. (AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>CNOOC Trading (Singapore) Pte. Ltd.:</strong> Identified as the trader who sold jet fuel to a Vietnamese company for the February 2024 delivery (shipment 8). Customs data indicated CNOOC Trading should have been aware the fuel was transported to Vietnam for transit purposes only. See Profile 5.4. (AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Abu Marine Co. Ltd. (Marshall Islands) and Pacific Light Operation and Ship Management (UAE):</strong> Identified by Justice For Myanmar in February 2026 as the registered owner and ISM manager respectively. See Profile 6.2. (JFM Feb 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>West of England P&amp;I Club:</strong> The vessel's Protection and Indemnity insurer at the time of Amnesty International's July 2024 investigation. The Club disclosed the CASIC affiliate ownership and stated there would be no cover for trades involving jet fuel to Myanmar. (AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Former PEAS terminal / Myan Oil Terminal, Thilawa, Yangon:</strong> The destination terminal for all ten documented deliveries. Shipments 1-9 arrived when the terminal was under Shoon Energy and Myanma Petrochemical Enterprise joint management (former PEAS terminal). Shipment 10 arrived when the terminal was operating under the Myan Oil Terminal Company Limited name. See Profile 1.3. (AI Jan 2024; AI Jul 2024; AI Jan 2026)</span></div>
+
+    <div class="bul" style="margin-bottom:0"><span class="bul-dot">&bull;</span><span><strong>FOAA anchorage area, Fujairah, UAE:</strong> Intermediate staging point for the July 2024 delivery (shipment 10), where HUITONG 78 was sighted from 13 to 26 June 2024, likely loading fuel via ship-to-ship transfer. See Profile 7.2. (AI Jan 2026)</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">6</div><div class="sec-ttl">Designation Status</div></div>
+  <div class="sec-body">
+
+    <table class="stbl">
+      <tr>
+        <th>Entity</th>
+        <th>US</th><th>UK</th><th>EU</th><th>Canada</th><th>Australia</th>
+      </tr>
+      <tr>
+        <td>HUITONG 78 / BARAAWE 1 (IMO 9646479)<span class="sd">Oil products tanker; carried at least nine confirmed aviation fuel shipments to Myanmar in 2023 and 2024; renamed and re-flagged after exposure</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+
+    <p class="prose" style="margin-top:10px">The vessel has not been sanctioned by any government in connection with Myanmar as of April 2026. Justice For Myanmar's February 2026 press release called for coordinated sanctions by the EU, UK, Canada, US, and Australia on BARAAWE 1 and on its registered owner and ISM manager. No designation has been confirmed in any of these jurisdictions since that call. The OFAC jet fuel sector determination under Executive Order 14014 (23 August 2023) provides the most applicable US designation authority and remains in force. The vessel's renaming, re-flagging, change of load port, and AIS blackouts collectively satisfy multiple criteria used by sanctions authorities to identify vessels engaged in deliberate sanctions evasion. (JFM Feb 2026; AI Jan 2026)</p>
+
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">7</div><div class="sec-ttl">Advocacy Interventions to Date</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>30 January 2024.</strong> Amnesty International identifies HUITONG 78 as the primary 2023 delivery vessel, documenting six confirmed shipments. Owner is unconfirmed at publication. (AI Jan 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>8 July 2024.</strong> Amnesty International documents two further confirmed deliveries and one likely delivery despite the vessel's public exposure. The West of England P&amp;I Club discloses CASIC affiliate ownership and confirms no insurance cover applied. Sahara Energy and CNOOC Trading named as traders in the two confirmed 2024 deliveries. (AI Jul 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>January 2026.</strong> Amnesty International confirms the July 2024 delivery as the tenth documented shipment and documents the renaming to BARAAWE 1 and AIS deactivation. (AI Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>23 February 2026.</strong> Justice for Myanmar formally calls for coordinated designation of BARAAWE 1, Abu Marine Co. Ltd., and Pacific Light Operation and Ship Management by the US, UK, EU, Canada, and Australia. No designation has been confirmed as of April 2026. (JFM Feb 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 8 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">8</div><div class="sec-ttl">Recommended Actions</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Designate BARAAWE 1, Abu Marine Co. Ltd., and Pacific Light Operation and Ship Management in all five jurisdictions.</strong> The vessel has nine confirmed Jet A-1 deliveries to Myanmar across 2023 and 2024. The August 2023 OFAC sector determination and its equivalents in the UK, EU, Canada, and Australia provide the legal authority. The renaming, re-flagging, and AIS deactivation behaviours provide additional grounds under vessel sanctions frameworks. JFM's February 2026 call provides the submission framework. (JFM Feb 2026; AI Jan 2026; OFAC Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Investigate the relationship between Abu Marine Co. Ltd. and the CASIC affiliate identified by the West of England P&amp;I Club.</strong> The Club confirmed a CASIC affiliate owned the vessel in July 2024; JFM identified Abu Marine as the registered owner in February 2026. Whether these are the same entity, related entities, or represent a subsequent ownership transfer has not been established. If CASIC or its affiliates retain a beneficial interest, that warrants diplomatic engagement with China alongside any designation submissions. (AI Jul 2024; JFM Feb 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Engage the St Kitts and Nevis flag administration and alert port state control.</strong> The vessel's re-flagging to St Kitts and Nevis following public exposure follows a documented pattern across the Myanmar ghost fleet. The flag state should be formally notified of the vessel's documented history and requested to confirm whether it maintains the flag registration, and if so, what due diligence it applied. Port state control bodies in jurisdictions the vessel transits should be alerted to the IMO number (9646479) regardless of any further name changes. (AI Jan 2026; JFM Feb 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 9 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">9</div><div class="sec-ttl">Timeline</div></div>
+  <div class="sec-body">
+    <table class="ttbl">
+      <tr><th style="width:130px">Date</th><th>Event</th></tr>
+      <tr><td>4 May 2023</td><td>HUITONG 78 makes its first documented delivery of Jet A-1 aviation fuel to Myanmar (shipment 1, 10.00 kt), loading at Hai Linh Cai Mep, Vietnam, and arriving at the former PEAS terminal (Shoon Energy management), Thilawa. (AI Jan 2024)</td></tr>
+      <tr><td>26 May 2023</td><td>Second delivery (shipment 2, 9.99 kt). Load port: Hai Linh Cai Mep, preceded by Pengerang Independent Terminals, Malaysia. (AI Jan 2024)</td></tr>
+      <tr><td>16 Jun 2023</td><td>Third delivery (shipment 3, 5.01 kt). Load port: Hai Linh Cai Mep, Vietnam. (AI Jan 2024)</td></tr>
+      <tr><td>7 Jul 2023</td><td>Fourth delivery (shipment 4, 10.09 kt). Load port: Hai Linh Cai Mep, Vietnam. (AI Jan 2024)</td></tr>
+      <tr><td>15 Aug 2023</td><td>Fifth delivery (shipment 5, 9.91 kt). Load port: Hai Linh Cai Mep, Vietnam, preceded by CNOOC terminal, Huizhou, China. (AI Jan 2024)</td></tr>
+      <tr><td>23 August 2023</td><td>OFAC issues the jet fuel sector determination under Executive Order 14014. HUITONG 78 is not designated. (AI Jan 2024)</td></tr>
+      <tr><td>20 Dec 2023</td><td>Sixth delivery (shipment 6, 9.81 kt). Load port: Hai Linh Cai Mep, Vietnam. (AI Jan 2024)</td></tr>
+      <tr><td>14 Jan 2024</td><td>Seventh delivery (shipment 7, approximately USD 8 million value). Load port: Hai Linh Cai Mep, preceded by Vopak Singapore Banyan Terminal. Trader: Sahara Energy International Pte. Ltd. (AI Jul 2024)</td></tr>
+      <tr><td>30 January 2024</td><td>Amnesty International publishes its investigation publicly naming HUITONG 78 as the primary vessel in Myanmar's 2023 aviation fuel supply chain. The vessel is Chinese-flagged. Ownership could not be confirmed. (AI Jan 2024)</td></tr>
+      <tr><td>29 Feb 2024</td><td>Eighth delivery (shipment 8, approximately USD 8 million value). Load port: Hai Linh Cai Mep, preceded by BP Hua Dong terminal, Ningbo. Trader: CNOOC Trading (Singapore) Pte. Ltd. (AI Jul 2024)</td></tr>
+      <tr><td>~12 May 2024</td><td>Likely ninth delivery (shipment 9 &#9733;). Load port: Hamriyah port, Sharjah, UAE. Cargo assessed as "quite likely" aviation fuel by AI; not confirmed. Vessel's AIS turned off on entering Thilawa. (AI Jul 2024)</td></tr>
+      <tr><td>8 July 2024</td><td>Amnesty International publishes its Reckless Shipments investigation, confirming deliveries in January and February 2024, identifying the likely May 2024 delivery, disclosing CASIC affiliate ownership via the West of England P&amp;I Club, and naming Sahara Energy and CNOOC Trading as traders. The Club states there is no cover for Myanmar jet fuel trades. (AI Jul 2024)</td></tr>
+      <tr><td>12 Jul 2024</td><td>Tenth and final documented delivery as HUITONG 78 (shipment 10). Loaded at FOAA anchorage, Fujairah, UAE, after being sighted there 13-26 June 2024. AIS turned off during offloading at Thilawa. Volume not confirmed. (AI Jan 2026)</td></tr>
+      <tr><td>Late 2024</td><td>Vessel renamed BARAAWE 1 and re-flagged from China to St Kitts and Nevis. (AI Jan 2026; JFM Feb 2026)</td></tr>
+      <tr><td>January 2026</td><td>Amnesty International's Ghost Ships investigation confirms the July 2024 delivery and documents the vessel's renaming to BARAAWE 1. (AI Jan 2026)</td></tr>
+      <tr><td>23 February 2026</td><td>Justice For Myanmar calls for coordinated sanctions on BARAAWE 1, Abu Marine Co. Ltd. and Pacific Light Operation and Ship Management across all five reviewed jurisdictions. No designation has been confirmed as of April 2026. (JFM Feb 2026)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 10 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">10</div><div class="sec-ttl">Sources</div></div>
+  <div class="sec-body">
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jan 2024)</strong> Amnesty International, <em>Myanmar: Military Still Importing Aviation Fuel Despite Sanctions Three Years On From Coup,</em> 30 January 2024. Available at: <a href="https://www.amnesty.org/en/latest/news/2024/01/myanmar-military-still-importing-aviation-fuel-despite-sanctions-three-years-on-from-coup/">https://www.amnesty.org/en/latest/news/2024/01/myanmar-military-still-importing-aviation-fuel-despite-sanctions-three-years-on-from-coup/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jul 2024)</strong> Amnesty International, <em>Myanmar: "Reckless" Shipments of Jet Fuel Continue as Air Strikes Multiply,</em> 8 July 2024. Available at: <a href="https://www.amnesty.org/en/latest/news/2024/07/myanmar-reckless-shipments-of-jet-fuel-continue-as-air-strikes-multiply/">https://www.amnesty.org/en/latest/news/2024/07/myanmar-reckless-shipments-of-jet-fuel-continue-as-air-strikes-multiply/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Jan 2026)</strong> Amnesty International, <em>Ghost Ships: How Iran Is Fuelling Deadly Airstrikes in Myanmar,</em> January 2026. Available at: <a href="https://www.amnesty.org/en/documents/asa16/8845/2026/en/">https://www.amnesty.org/en/documents/asa16/8845/2026/en/</a></span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(JFM Feb 2026)</strong> Justice For Myanmar, <em>Justice For Myanmar Calls for New and Coordinated Sanctions on Junta's Aviation Fuel Supply Chain,</em> 23 February 2026. Available at: <a href="https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain">https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain</a></span></div>
+
+  </div>
+</div>
+
+<div class="bot-rule"></div>
+</div>
+</body>
+</html>

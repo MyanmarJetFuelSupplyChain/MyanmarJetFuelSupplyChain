@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>NEPAS, Profile 1.2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e0e0dc;padding:20px;font-family:'Georgia',serif}
+.page{background:#fff;width:100%;max-width:820px;margin:0 auto;border:1px solid #999;font-size:12px;color:#111}
+.entity-block{padding:15px 18px 13px;border-bottom:2px solid #0d1f3c}
+.entity-name{font-family:'Arial',sans-serif;font-size:23px;font-weight:700;color:#0d1f3c;line-height:1.1;letter-spacing:-0.2px;text-align:center}
+.entity-aka{font-family:'Arial',sans-serif;font-size:10.5px;color:#444;font-style:italic;margin-top:3px;text-align:center;letter-spacing:1px;text-transform:uppercase}
+.summary{padding:12px 18px;background:#f6f7f9;border-bottom:1px solid #aab}
+.sum-lbl{font-family:'Arial',sans-serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#0d1f3c;font-weight:700;margin-bottom:5px}
+.sum-txt{font-family:'Georgia',serif;font-size:11px;line-height:1.8;color:#222;text-align:justify;font-style:italic}
+.sec-hd{display:flex;align-items:stretch;border-top:2px solid #2a4070;border-bottom:1px solid #2a4070}
+.sec-num{background:#0d1f3c;color:#fff;font-family:'Arial',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 9px;min-width:28px;display:flex;align-items:center;justify-content:center}
+.sec-ttl{background:#e8ecf2;border-left:1px solid #2a4070;padding:5px 12px;font-family:'Arial',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0d1f3c;display:flex;align-items:center}
+.sec-body{padding:10px 18px 13px}
+.field{display:flex;gap:0;margin-bottom:3px;font-size:11px;line-height:1.5}
+.fl{font-family:'Arial',sans-serif;font-weight:700;min-width:190px;color:#0d1f3c;font-size:10px;padding-top:1px}
+.fv{color:#222;font-size:11px}
+.subh{font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0d1f3c;border-bottom:1px solid #c5ccd8;padding-bottom:3px;margin:10px 0 6px}
+.prose{font-size:11px;line-height:1.75;color:#222;text-align:justify;margin-bottom:8px}
+.prose:last-child{margin-bottom:0}
+.bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.bul-dot{color:#0d1f3c;font-size:14px;line-height:1.2;flex-shrink:0;margin-top:1px}
+.callout{background:#f0f3f8;border-left:3px solid #0d1f3c;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.callout strong{color:#0d1f3c}
+.gap-highlight{background:#fffbf0;border:1px solid #d4a000;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.gap-highlight strong{color:#7a5c00}
+.stbl{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:10px;margin-top:6px}
+.stbl th{background:#0d1f3c;color:#fff;padding:6px 8px;font-size:8.5px;font-weight:700;letter-spacing:1px;text-align:center;border:1px solid #2a4070}
+.stbl th:first-child{text-align:left;padding-left:10px}
+.stbl td{padding:6px 8px;border:1px solid #c8cdd8;text-align:center;vertical-align:top}
+.stbl td:first-child{text-align:left;padding-left:10px;color:#0d1f3c;font-weight:700;font-size:10.5px}
+.sd{display:block;font-size:8.5px;color:#666;font-style:italic;font-weight:400;margin-top:1px}
+.ck{color:#0d1f3c;font-size:14px;font-weight:700}
+.stbl tr:nth-child(even) td{background:#f4f6f9}
+.ttbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:4px}
+.ttbl th{background:#0d1f3c;color:#fff;padding:6px 10px;font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;border:1px solid #2a4070}
+.ttbl td{padding:6px 10px;border:1px solid #c8cdd8;vertical-align:top;line-height:1.55}
+.ttbl td:first-child{font-family:'Arial',sans-serif;font-weight:700;color:#0d1f3c;font-size:10px;white-space:nowrap;width:120px}
+.ttbl tr:nth-child(even) td{background:#f4f6f9}
+.act-bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.act-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:1px}
+.src-bul{display:flex;align-items:flex-start;gap:6px;font-size:10.5px;line-height:1.6;margin-bottom:4px;color:#222}
+.src-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:0}
+.bot-rule{height:4px;background:#0d1f3c}
+a{color:#0d1f3c}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ENTITY HEADER -->
+<div class="entity-block">
+  <div class="entity-name">National Energy Prime Aviation Services Co. Ltd. (NEPAS)</div>
+  <div class="entity-aka">Profile 1.2</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-lbl">Summary Assessment</div>
+  <div class="sum-txt">National Energy Prime Aviation Services Co. Ltd. (NEPAS) is the joint venture between Myanma Petrochemical Enterprise (MPE) and Shoon Energy Pte. Ltd. that holds Myanmar's aviation fuel import licence. It is the formal purchaser for all documented imported Jet A-1 since the coup, buying directly from Thai trading company CB Energy and operating through a proxy company, Intraco, to buy from Tawan-Oil Trading. Together NEPAS and Intraco accounted for approximately USD 65 million of the USD 80 million in aviation fuel payments documented by the UN Special Rapporteur in 2023. Between January and August 2022, aviation fuel imported under NEPAS's licence was delivered directly to ten Myanmar Air Force bases, totalling more than 17 million litres. NEPAS has not been sanctioned in any jurisdiction.</div>
+</div>
+
+<!-- IDENTIFICATION -->
+<div>
+  <div class="sec-hd"><div class="sec-num">ID</div><div class="sec-ttl">Identification</div></div>
+  <div class="sec-body">
+    <div class="field"><span class="fl">Current name:</span><span class="fv">National Energy Prime Aviation Services Co. Ltd.</span></div>
+    <div class="field"><span class="fl">Abbreviation:</span><span class="fv">NEPAS</span></div>
+    <div class="field"><span class="fl">Former name:</span><span class="fv">National Energy Puma Aviation Services Co. Ltd. (name in use at time of coup and through 2022; renamed following Puma Energy's exit in December 2022)</span></div>
+    <div class="field"><span class="fl">Entity type:</span><span class="fv">Joint venture company, registered in Myanmar</span></div>
+    <div class="field"><span class="fl">Joint venture partners:</span><span class="fv">Myanma Petrochemical Enterprise (MPE) (junta-controlled state-owned enterprise) and Shoon Energy Pte. Ltd. (Singapore, formerly Asia Sun Aviation Pte. Ltd.)</span></div>
+    <div class="field"><span class="fl">Beneficial shareholder:</span><span class="fv">PEIA Pte. Ltd. (Singapore, US-sanctioned) is the beneficial shareholder of NEPAS on behalf of the Shoon Group</span></div>
+    <div class="field"><span class="fl">Licence granted:</span><span class="fv">Effective June 2016, under Myanmar Investment Commission Permit No. 1017/2016 (permit dated 26 March 2016); NEPAS became the sole importer and distributor of aviation fuel in Myanmar at that time. (AI Nov 2022)</span></div>
+    <div class="field"><span class="fl">Function:</span><span class="fv">Licensed importer, storer and seller of aviation fuel in Myanmar; formal purchasing entity and consignee for imported Jet A-1 shipments; manages storage and refuelling facilities at 11 airports: Yangon, Mandalay, Heho, Nay Pyi Taw, Tachileik, Myitkyina, Sittwe, Myeik, Dawei, Kawthaung and Kyauk Pyu. (AI Nov 2022; JFM May 2025)</span></div>
+    <div class="field"><span class="fl">Designation status:</span><span class="fv" style="color:#c00000;font-weight:700">Not sanctioned in any jurisdiction as of April 2026</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">1</div><div class="sec-ttl">Role in the Aviation Fuel Supply Chain</div></div>
+  <div class="sec-body">
+
+    <p class="prose">NEPAS holds the licence to import, store, and sell aviation fuel in Myanmar and manages storage and refuelling at eleven airports. It is jointly controlled by MPE (51 percent) and Shoon Energy Pte. Ltd. (49 percent). Before the coup it was a Puma Energy joint venture; following Puma's exit in December 2022, its share passed to Shoon Energy and the entity was renamed to remove the Puma reference. The joint venture structure and function did not change. (AI Nov 2022; AI Mar 2023)</p>
+
+    <p class="prose">The UN Special Rapporteur's 2024 report documented that NEPAS purchased over USD 40 million of aviation fuel directly from CB Energy in 2023, with all payments clearing through United Amara Bank to Krung Thai Bank. NEPAS also established Intraco (subsequently renamed International Green Agrotrade Company Limited) on 20 September 2023 as a purchasing proxy. Intraco bought a further approximately USD 25 million from Tawan-Oil Trading through the same United Amara Bank route to Kasikorn Bank. The creation of Intraco after multiple rounds of public reporting on the supply chain demonstrates a deliberate effort to obscure NEPAS's purchasing role. (UNSR Jun 2024)</p>
+
+    <p class="prose">Between January and August 2022, Amnesty International documented more than 54.8 million litres of aviation fuel flowing through the NEPAS and MPE co-controlled Thilawa terminal, of which over 17 million litres were delivered directly to ten Myanmar Air Force bases. Two former Myanmar Air Force defectors confirmed that fuel stored at NEPAS's Mandalay facility was trucked onward to military bases including Nansang. Amnesty International linked four of the bases receiving fuel to attacks amounting to war crimes. The SAC maintains effective control over the entire supply chain and can direct fuel prioritised for the air force regardless of NEPAS's civilian licence cover. (AI Nov 2022)</p>
+
+    <p class="prose">NEPAS's civilian airport management function is sometimes cited to suggest it serves civilian purposes. This framing does not withstand scrutiny. Satellite imagery of Nay Pyi Taw airport showed consistent vehicle activity only at the storage area adjacent to the air base, not at the purported civilian facility, and only five flights (four domestic and one international) arrived or departed from Nay Pyi Taw in August 2022. The majority of fuel delivered there under NEPAS's name was available for military use. (AI Nov 2022)</p>
+
+</div>
+</div>
+
+<!-- SECTION 2 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">2</div><div class="sec-ttl">Evidence</div></div>
+  <div class="sec-body">
+
+    <div class="subh">AI Nov 2022 documentation of NEPAS in the pre-Puma-exit chain</div>
+
+    <p class="prose">Amnesty International's November 2022 investigation established that at the time of the coup, NEPAS was Myanmar's principal aviation fuel import entity, operating as a joint venture between Puma Energy and Asia Sun Group. The report documented that NEPAS managed both the import function and the distribution network, including the delivery of aviation fuel to Myanmar Air Force bases and civilian airports. Puma Energy's own confirmation to Amnesty International that MPE ran a post-coup tender for military aviation fuel supply, in which Puma did not participate, establishes that NEPAS's military-supply function pre-dated Puma's exit and continued under MPE and Shoon Energy's joint control. (AI Nov 2022)</p>
+
+    <div class="subh">Name change</div>
+
+    <p class="prose">Following Puma Energy's exit in December 2022, NEPAS was renamed from National Energy Puma Aviation Services Co. Ltd. to National Energy Prime Aviation Services Co. Ltd. The renaming reflects the post-Puma corporate restructuring rather than any change in function or joint venture structure. MPE remained the state-side joint venture partner throughout. (JFM May 2025)</p>
+
+    <div class="subh">Airport delivery counts and military end-use evidence, 2021–2022</div>
+
+    <p class="prose">Amnesty International's November 2022 investigation documented the scale of deliveries to individual NEPAS-managed airports using datasets covering more than 1,500 truck trips between October 2021 and August 2022. Delivery counts from the NEPAS storage facility dataset (January to August 2022) were: Yangon Airport, 823 deliveries; Mandalay Airport, 256 deliveries; Heho Airport, 22 deliveries; Nay Pyi Taw Airport, 28 deliveries. The military air base dataset recorded a further 100 deliveries to Nay Pyi Taw between December 2021 and July 2022, and 15 deliveries to Mandalay in the same period. Approximately 50 percent of the tanker trucks used for NEPAS airport deliveries were also used for military air base deliveries; approximately 15 percent of all trucks documented were used for both civilian airport and military air base deliveries in the same period. (AI Nov 2022)</p>
+
+    <p class="prose">Satellite imagery analysis of Nay Pyi Taw airport established that there is only one active storage facility at the airport, the one adjacent to the military air base. No vehicle activity was observed around the purported civilian NEPAS storage facility; consistent vehicle activity was recorded at the storage area adjacent to the air base from December 2021 to April 2022. In August 2022, only five flights arrived or departed from Nay Pyi Taw, four domestic and one international, indicating that the majority of fuel delivered to Nay Pyi Taw under NEPAS's name was necessarily available for military use. (AI Nov 2022)</p>
+
+    <div class="subh">Defector testimony: Mandalay NEPAS facility to Nansang air base</div>
+
+    <p class="prose">Amnesty International interviewed two defectors from the Myanmar Air Force who provided first-hand testimony confirming that fuel stored at NEPAS's Mandalay facility was transferred onward to military air bases. A pilot who served at Nansang air base and defected in February 2022 confirmed that fuel was picked up by military truck at Mandalay airport, taken to the Meikhtila Ground Force compound, and then sent to Nansang air base. A flight sergeant based at Nansang confirmed that since the coup, aviation fuel is delivered from Tada-U in Mandalay to Nansang air base. This testimony directly establishes that NEPAS's civilian-side storage at Mandalay functioned as a supply point for military operations. (AI Nov 2022)</p>
+
+    <div class="subh">Mandalay NEPAS storage facility specifications</div>
+
+    <p class="prose">According to the UN Logistics Cluster's Logistics Capacity Assessment, Mandalay International Airport's NEPAS storage facility has four fuel storage tanks of 600,000 litres each and a subterranean fuelling system for six contact gates and twelve fuelling points, with refuelling by bowsers (one 7,000-gallon and three 4,000-gallon capacity) for the remote parking stands. The estimated daily demand at Mandalay is 77,000 litres of Jet A-1. These specifications confirm the significant scale of NEPAS infrastructure through which fuel flows towards military end-users. (AI Nov 2022)</p>
+
+    <div class="subh">UNSR documentation of NEPAS as aviation fuel buyer, 2023</div>
+
+    <p class="prose">The UN Special Rapporteur's June 2024 report contains the most detailed documented evidence of NEPAS's purchasing role. Based on confidential trade records reviewed by the UNSR, the 2023 aviation fuel transaction structure was as follows: NEPAS purchased directly from CB Energy (Thailand) at a value of approximately USD 40 million, with payment processed through United Amara Bank to CB Energy's account at Krung Thai Bank. NEPAS also acted as parent entity for Intraco, which purchased approximately USD 25 million from Tawan-Oil Trading (Thailand), processed through United Amara Bank to Tawan-Oil's account at Kasikorn Bank. Asia Sun Group's proxies Swan Energy (approximately USD 15 million from CB Energy) and Rich Ray Trading (from Tawan-Oil Trading) completed the documented transactions. All Myanmar-side payments went through United Amara Bank. (UNSR Jun 2024)</p>
+
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">3</div><div class="sec-ttl">Key Relationships</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Myanma Petrochemical Enterprise (MPE):</strong> The junta-controlled state-owned enterprise that is NEPAS's joint venture partner. MPE provides NEPAS with state authority and the formal licensing framework for aviation fuel importation in Myanmar. MPE is unsanctioned in all jurisdictions. See Profile 1.1. (AI Nov 2022; JFM Feb 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Shoon Energy Pte. Ltd. (formerly Asia Sun Aviation Pte. Ltd., Singapore):</strong> The Singapore-registered company that holds NEPAS's private-sector joint venture share following Puma Energy's exit. Shoon Energy is sanctioned by the US, UK and Canada (see Section 4 note on Canada designation). The transfer of Puma's share to Shoon Energy in December 2022 completed NEPAS's transition from a commercially independent joint venture into one wholly owned on the private side by the Asia Sun / Shoon Group crony network. See Joint Profile 2.1. (AI Mar 2023; JFM May 2025)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>PEIA Pte. Ltd. (Singapore):</strong> The Singapore-registered entity identified by JFM as the beneficial shareholder of NEPAS on behalf of the Shoon Group. PEIA Pte. Ltd. is US-sanctioned. It is owned by Khin Phyu Win, the former owner of Asia Sun Group, who transferred formal ownership of 11 Asia Sun network companies to Zaw Min Tun in April 2023. See Joint Profile 2.1. (JFM May 2025; OFAC Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Myan Oil Terminal Company Limited (formerly Puma Energy Asia Sun Company Limited / PEAS):</strong> The physical fuel terminal at Thilawa, Yangon, which is owned by P.E.I. Energy Pte. Ltd. (Singapore) and co-operated by MPE. Every aviation fuel shipment documented in this database was offloaded at this terminal, which NEPAS uses as its storage facility. See Profile 1.3. (AI Nov 2022; JFM May 2025)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Intraco / International Green Agrotrade Company Limited (Myanmar):</strong> A Myanmar-registered proxy company established on 20 September 2023 on behalf of NEPAS, registration number 138705277. Intraco purchased approximately USD 25 million in aviation fuel from Tawan-Oil Trading in 2023, processed through United Amara Bank. Evidence from Myanmar's corporate directory suggests it subsequently changed its name to International Green Agrotrade Company Limited. Unsanctioned in all jurisdictions as of June 2024. See Joint Profile 1.6. (UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>CB Energy (Thailand):</strong> Thailand-registered company from which NEPAS purchased approximately USD 40 million in aviation fuel in 2023, paid via United Amara Bank to CB Energy's account at Krung Thai Bank. Unsanctioned in all jurisdictions. See Profile 3.1. (UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>United Amara Bank (UAB):</strong> The Myanmar private bank through which NEPAS processed all aviation fuel purchase payments in 2023. The UNSR explicitly calls for UAB's relationships to be frozen. Unsanctioned in all jurisdictions. See Profile 8.1. (UNSR Jun 2024)</span></div>
+
+    <div class="bul" style="margin-bottom:0"><span class="bul-dot">&bull;</span><span><strong>Puma Energy (exited):</strong> The Singapore-registered, Geneva-based multinational that was NEPAS's original private-sector joint venture partner. Puma held a 34 percent beneficial stake in NEPAS and, through its subsidiary Puma Energy Irrawaddy Pte. Ltd., operated the Thilawa terminal. Puma initially suspended some operations after the coup, subsequently resumed limited civilian distribution, and completed the full sale of its assets, including its share in NEPAS, in December 2022. Puma's exit and the subsequent transfer of its NEPAS share to Shoon Energy is the central event that completed the militarisation of the aviation fuel import chain. See Reference Entry 10 (Puma Energy). (AI Nov 2022; AI Mar 2023)</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">4</div><div class="sec-ttl">Designation Status</div></div>
+  <div class="sec-body">
+
+    <table class="stbl">
+      <tr>
+        <th style="min-width:220px;text-align:left">Entity</th>
+        <th style="width:50px">US</th><th style="width:50px">UK</th><th style="width:50px">EU</th><th style="width:60px">Canada</th><th style="width:68px">Australia</th>
+      </tr>
+      <tr>
+        <td>NEPAS (National Energy Prime Aviation Services Co. Ltd.)<span class="sd">Profiled entity; not designated in any jurisdiction</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Shoon Energy Pte. Ltd. (Singapore)<span class="sd">Formerly Asia Sun Aviation; private-sector JV partner in NEPAS</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td><span class="ck">&#10003;</span></td><td></td>
+      </tr>
+      <tr>
+        <td>PEIA Pte. Ltd. (Singapore)<span class="sd">Beneficial shareholder of NEPAS; owned by Khin Phyu Win</span></td>
+        <td><span class="ck">&#10003;</span></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Myanma Petrochemical Enterprise (MPE)<span class="sd">State JV partner in NEPAS; not designated</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Intraco / International Green Agrotrade Co. Ltd.<span class="sd">NEPAS proxy established Sep 2023; not designated</span></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Khin Phyu Win<span class="sd">Beneficial owner of Shoon Energy and PEIA; former Asia Sun owner</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td><span class="ck">&#10003;</span></td><td></td>
+      </tr>
+      <tr>
+        <td>Zaw Min Tun<span class="sd">Formal owner of 11 Asia Sun companies post-April 2023 transfer</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td><span class="ck">&#10003;</span></td><td></td>
+      </tr>
+    </table>
+
+    <div class="gap-highlight" style="margin-top:10px">
+      <strong>The NEPAS sanctions gap:</strong> NEPAS is the entity that formally holds the aviation fuel import licence in Myanmar. Every shipment in this database arrived as cargo consigned to NEPAS, or in some cases to Asia Sun Group entities acting under the same import licence framework. Both joint venture partners, Shoon Energy Pte. Ltd. on the private side and MPE on the state side, are either sanctioned (Shoon Energy, US, UK and Canada) or the subject of explicit sanctions calls (MPE, every major research and advocacy actor). Yet NEPAS itself, the operating entity that issues the purchase orders and receives the fuel, has not been designated in any jurisdiction. Designating NEPAS would directly target the legal entity through which all international aviation fuel purchases flow, rather than only its ownership layer. (UNSR Jun 2024; AI Nov 2022; JFM Nov 2022)
+    </div>
+
+    <div class="callout" style="margin-top:8px;font-size:10px">
+      <strong>Note on Canada / Shoon Energy Pte. Ltd.:</strong> Shoon Energy Pte. Ltd. does not appear as a named entry in Canada's Special Economic Measures (Burma) Regulations (SEMA) sanctions list. Canada is marked as sanctioned here because Canada's SEMA regulations include Asia Sun Group Company Limited, of which Shoon Energy Pte. Ltd. is a subsidiary and affiliated company. Under Canadian sanctions law, entities owned or controlled by a designated person or entity are subject to the same prohibitions as the designated entity. Canada's October 2023 aviation fuel ban (SOR/2023-228, effective 31 October 2023) also prohibits the export, sale, supply and shipment of aviation fuel, and the provision of shipping insurance, to Myanmar, a prohibition that applies to all actors in the supply chain regardless of individual designation status. Advocates should verify the precise legal basis for any enforcement action under Canadian law.
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">5</div><div class="sec-ttl">Advocacy Interventions to Date</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>November 2022.</strong> Amnesty International's Deadly Cargo documents NEPAS's role in the import chain. Justice for Myanmar calls for governments to sanction NEPAS and MPE. No designation of NEPAS follows. (AI Nov 2022; JFM Nov 2022)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>March 2023.</strong> Justice for Myanmar confirms Puma's NEPAS share passed to Shoon Energy and calls explicitly for NEPAS's designation, noting it imports, stores, and distributes jet fuel and remains unsanctioned. No designation follows. (JFM Mar 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>23 August 2023.</strong> OFAC issues its jet fuel sector determination under Executive Order 14014. Justice for Myanmar reiterates the call for sanctions on NEPAS. No designation follows. (OFAC Aug 2023; JFM Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>26 June 2024.</strong> The UN Special Rapporteur's Banking on the Death Trade report confirms NEPAS as the direct buyer of approximately USD 40 million of aviation fuel in 2023 and states explicitly that NEPAS has not been sanctioned by any government. The UNSR calls for sanctions on Myanmar-based buyers, language that explicitly covers NEPAS. No designation follows. (UNSR Jun 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>29 October 2024.</strong> The UK designates Swan Energy and Myan-Oil, both Asia Sun Group proxies in the same network. NEPAS is not designated in this round. (UK Oct 2024)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>February 2026.</strong> Justice for Myanmar calls for coordinated sanctions on MPE and others in the supply chain. NEPAS is not named explicitly. No designation follows as of April 2026. (JFM Feb 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 6 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">6</div><div class="sec-ttl">Recommended Actions</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Designate NEPAS and Intraco simultaneously in all five jurisdictions.</strong> Sanctioning only the ownership layer (Shoon Energy, PEIA, MPE) without sanctioning the operating entity leaves the import licence intact. The UNSR's transaction data provides the evidentiary basis. For the US, the August 2023 OFAC sector determination removes the need to prove direct military end-use. Intraco must be included in the same round: it was created specifically after the supply chain came under scrutiny and processed USD 25 million in 2023. Designating NEPAS alone would leave Intraco operational as the purchasing proxy. (UNSR Jun 2024; OFAC Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Use the Mandalay defector testimony and Nay Pyi Taw satellite evidence in designation submissions.</strong> The two Myanmar Air Force defectors who confirmed that fuel stored at NEPAS Mandalay was trucked to military bases, and the satellite imagery showing no civilian flight activity at Nay Pyi Taw consistent with the fuel volumes delivered there, provide specific evidence of military end-use that goes beyond the UNSR transaction data and strengthens submissions to jurisdictions with higher evidentiary thresholds. (AI Nov 2022)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Treat United Amara Bank as a complementary pressure point.</strong> UAB processed all NEPAS aviation fuel payments in 2023. Restricting UAB's international banking relationships would cut the payment pathway between NEPAS and its Thai suppliers. This is a complementary action to direct NEPAS designation, not a substitute. See Profile 8.1. (UNSR Jun 2024)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 7 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">7</div><div class="sec-ttl">Timeline</div></div>
+  <div class="sec-body">
+    <table class="ttbl">
+      <tr><th style="width:130px">Date</th><th>Event</th></tr>
+      <tr><td>Pre-coup</td><td>NEPAS operates as National Energy Puma Aviation Services Co. Ltd., a joint venture between Puma Energy and an Asia Sun Group affiliate in Singapore, holding the aviation fuel import licence in Myanmar and managing civilian airports. (AI Nov 2022)</td></tr>
+      <tr><td>June 2016</td><td>NEPAS is granted Myanmar Investment Commission Permit No. 1017/2016 (permit dated 26 March 2016) and becomes the sole importer and distributor of aviation fuel in Myanmar, expanding operations to 11 airports. (AI Nov 2022)</td></tr>
+      <tr><td>2019</td><td>The Myanmar Investment Commission grants aviation fuel import permits to other companies, though NEPAS's market position as dominant importer is not significantly affected before the coup. (AI Nov 2022)</td></tr>
+      <tr><td>1 February 2021</td><td>Military coup in Myanmar. Puma Energy suspends its Myanmar operations within days of the coup. NEPAS's function continues under MPE's state authority while its private-sector partner assesses its position.</td></tr>
+      <tr><td>Jan–Aug 2022</td><td>Aviation fuel imported through the NEPAS and MPE co-controlled Thilawa terminal is distributed to ten Myanmar Air Force bases (more than 17 million litres) and to NEPAS-managed civilian airports (37.8 million litres); combined more than 54.8 million litres across both chains. NEPAS invoices also document deliveries from October 2021. (AI Nov 2022)</td></tr>
+      <tr><td>November 2022</td><td>Amnesty International publishes Deadly Cargo, documenting NEPAS's role in the aviation fuel supply chain and calling for sanctions. Justice for Myanmar simultaneously calls for NEPAS designation alongside MPE. No designation follows. (AI Nov 2022; JFM Nov 2022)</td></tr>
+      <tr><td>25 December 2022</td><td>Puma Energy completes the sale of its Myanmar assets, including its share in NEPAS, to Shoon Energy Pte. Ltd. (formerly Asia Sun Aviation Pte. Ltd.). NEPAS is subsequently renamed from National Energy Puma Aviation Services Co. Ltd. to National Energy Prime Aviation Services Co. Ltd. to remove the Puma association. (AI Mar 2023; JFM May 2025)</td></tr>
+      <tr><td>March 2023</td><td>Justice for Myanmar and Amnesty International confirm the Puma-to-Shoon transfer and call for NEPAS sanctions. No designation follows. (AI Mar 2023; JFM Mar 2023)</td></tr>
+      <tr><td>August 2023</td><td>OFAC issues sector determination extending Executive Order 14014 to the jet fuel sector, creating the legal authority to designate NEPAS. Justice for Myanmar calls for coordinated NEPAS and MPE sanctions. No designation of NEPAS follows. (OFAC Aug 2023; JFM Aug 2023)</td></tr>
+      <tr><td>20 September 2023</td><td>Intraco is established on behalf of NEPAS as a new Myanmar-registered proxy purchasing entity. It subsequently purchases approximately USD 25 million in aviation fuel from Tawan-Oil Trading through United Amara Bank. Evidence suggests it is later renamed International Green Agrotrade Company Limited (registration number 138705277). (UNSR Jun 2024)</td></tr>
+      <tr><td>Calendar year 2023</td><td>NEPAS purchases approximately USD 40 million of aviation fuel directly from CB Energy (Thailand) through United Amara Bank, paid to CB Energy's accounts at Krung Thai Bank. Total NEPAS and Intraco purchases for the year are approximately USD 65 million of the USD 80 million in total aviation fuel purchases documented by the UNSR. (UNSR Jun 2024)</td></tr>
+      <tr><td>June 2024</td><td>UN Special Rapporteur's Banking on the Death Trade report explicitly confirms that NEPAS has not been sanctioned by any government and documents NEPAS's direct purchasing role in the 2023 aviation fuel supply chain from trade records. (UNSR Jun 2024)</td></tr>
+      <tr><td>February 2026</td><td>Justice for Myanmar calls for coordinated sanctions on vessels, their owners and managers, Hai Linh, and MPE as the junta's central body for aviation fuel import, storage and distribution. NEPAS is not named explicitly in the press release. No designation of NEPAS follows as of April 2026. (JFM Feb 2026)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">8</div><div class="sec-ttl">Sources</div></div>
+  <div class="sec-body">
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Nov 2022)</strong> Amnesty International / Justice for Myanmar, <em>Deadly Cargo: Exposing the Supply Chain that Fuels War Crimes in Myanmar,</em> November 2022. Available at: <a href="https://www.amnesty.org/en/documents/asa16/6147/2022/en/">https://www.amnesty.org/en/documents/asa16/6147/2022/en/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Nov 2022)</strong> Justice for Myanmar, <em>JFM Calls for a Ban on Jet Fuel Exports to Myanmar and Sanctions on Myanmar Jet Fuel Companies,</em> November 2022. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-calls-for-a-ban-on-jet-fuel-exports-to-myanmar-and-sanctions-on-myanmar-jet-fuel-companies">https://www.justiceformyanmar.org/press-releases/jfm-calls-for-a-ban-on-jet-fuel-exports-to-myanmar-and-sanctions-on-myanmar-jet-fuel-companies</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(AI Mar 2023)</strong> Amnesty International / Global Witness / Burma Campaign UK, <em>New Shipments of Aviation Fuel Revealed Despite the Military's War Crimes,</em> March 2023. Available at: <a href="https://www.amnesty.org/en/latest/news/2023/03/myanmar-new-shipments-of-aviation-fuel-revealed-despite-the-militarys-war-crimes/">https://www.amnesty.org/en/latest/news/2023/03/myanmar-new-shipments-of-aviation-fuel-revealed-despite-the-militarys-war-crimes/</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Mar 2023)</strong> Justice for Myanmar, <em>JFM Welcomes UK and US Sanctions on the Myanmar Junta's Jet Fuel Supply Chain,</em> March 2023. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-welcomes-uk-and-us-sanctions-on-the-myanmar-juntas-jet-fuel-supply-chain">https://www.justiceformyanmar.org/press-releases/jfm-welcomes-uk-and-us-sanctions-on-the-myanmar-juntas-jet-fuel-supply-chain</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(OFAC Aug 2023)</strong> US Department of the Treasury, Office of Foreign Assets Control, <em>Treasury Expands Burma-Related Sanctions and Designates Additional Jet Fuel Suppliers in Burma,</em> 23 August 2023. Available at: <a href="https://home.treasury.gov/news/press-releases/jy1701">https://home.treasury.gov/news/press-releases/jy1701</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM Aug 2023)</strong> Justice for Myanmar, <em>JFM Welcomes US Action to Block the Myanmar Junta's Access to Jet Fuel,</em> August 2023. Available at: <a href="https://www.justiceformyanmar.org/press-releases/jfm-welcomes-us-action-to-block-the-myanmar-juntas-access-to-jet-fuel">https://www.justiceformyanmar.org/press-releases/jfm-welcomes-us-action-to-block-the-myanmar-juntas-access-to-jet-fuel</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(UNSR Jun 2024)</strong> UN Special Rapporteur on the situation of human rights in Myanmar (Tom Andrews), <em>Banking on the Death Trade: How Banks and Governments Enable the Military Junta in Myanmar,</em> A/HRC/56/CRP.7, 26 June 2024. Available at: <a href="https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session56/a-hrc-56-crp-7.pdf">https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session56/a-hrc-56-crp-7.pdf</a></span></div>
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(JFM May 2025)</strong> Justice for Myanmar, <em>Companies in ASEAN Fuelling Myanmar Junta's International Crimes,</em> May 2025. Available at: <a href="https://www.justiceformyanmar.org/stories/companies-in-asean-fuelling-myanmar-juntas-international-crimes">https://www.justiceformyanmar.org/stories/companies-in-asean-fuelling-myanmar-juntas-international-crimes</a></span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(JFM Feb 2026)</strong> Justice for Myanmar, <em>Justice for Myanmar Calls for New and Coordinated Sanctions on Junta's Aviation Fuel Supply Chain,</em> February 2026. Available at: <a href="https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain">https://www.justiceformyanmar.org/press-releases/justice-for-myanmar-calls-for-new-and-coordinated-sanctions-on-juntas-aviation-fuel-supply-chain</a></span></div>
+
+  </div>
+</div>
+
+<div class="bot-rule"></div>
+</div>
+</body>
+</html>

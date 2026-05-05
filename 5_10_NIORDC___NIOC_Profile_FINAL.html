@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>NIORDC and NIOC, Profile 5.10</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e0e0dc;padding:20px;font-family:'Georgia',serif}
+.page{background:#fff;width:100%;max-width:820px;margin:0 auto;border:1px solid #999;font-size:12px;color:#111}
+.entity-block{padding:15px 18px 13px;border-bottom:2px solid #0d1f3c}
+.entity-name{font-family:'Arial',sans-serif;font-size:19px;font-weight:700;color:#0d1f3c;line-height:1.2;letter-spacing:-0.2px;text-align:center}
+.entity-aka{font-family:'Arial',sans-serif;font-size:10.5px;color:#444;font-style:italic;margin-top:3px;text-align:center;letter-spacing:1px;text-transform:uppercase}
+.summary{padding:12px 18px;background:#f6f7f9;border-bottom:1px solid #aab}
+.sum-lbl{font-family:'Arial',sans-serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#0d1f3c;font-weight:700;margin-bottom:5px}
+.sum-txt{font-family:'Georgia',serif;font-size:11px;line-height:1.8;color:#222;text-align:justify;font-style:italic}
+.sec-hd{display:flex;align-items:stretch;border-top:2px solid #2a4070;border-bottom:1px solid #2a4070}
+.sec-num{background:#0d1f3c;color:#fff;font-family:'Arial',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 9px;min-width:28px;display:flex;align-items:center;justify-content:center}
+.sec-ttl{background:#e8ecf2;border-left:1px solid #2a4070;padding:5px 12px;font-family:'Arial',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0d1f3c;display:flex;align-items:center}
+.sec-body{padding:10px 18px 13px}
+.field{display:flex;gap:0;margin-bottom:3px;font-size:11px;line-height:1.5}
+.fl{font-family:'Arial',sans-serif;font-weight:700;min-width:190px;color:#0d1f3c;font-size:10px;padding-top:1px}
+.fv{color:#222;font-size:11px}
+.subh{font-family:'Arial',sans-serif;font-weight:700;font-size:11px;color:#0d1f3c;margin:10px 0 5px;padding-bottom:2px;border-bottom:1px solid #d0d5e0}
+.prose{font-size:11px;line-height:1.75;color:#222;text-align:justify;margin-bottom:8px}
+.prose:last-child{margin-bottom:0}
+.bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.bul-dot{color:#0d1f3c;font-size:14px;line-height:1.2;flex-shrink:0;margin-top:1px}
+.stbl{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:10px;margin-top:6px}
+.stbl th{background:#0d1f3c;color:#fff;padding:6px 8px;font-size:8.5px;font-weight:700;letter-spacing:1px;text-align:center;border:1px solid #2a4070}
+.stbl th:first-child{text-align:left;padding-left:10px}
+.stbl td{padding:6px 8px;border:1px solid #c8cdd8;text-align:center;vertical-align:top}
+.stbl td:first-child{text-align:left;padding-left:10px;color:#0d1f3c;font-weight:700;font-size:10.5px}
+.sd{display:block;font-size:8.5px;color:#666;font-style:italic;font-weight:400;margin-top:1px}
+.stbl tr:nth-child(even) td{background:#f4f6f9}
+.ck{color:#1a6600;font-weight:700;font-size:13px}
+.ttbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:4px}
+.ttbl th{background:#0d1f3c;color:#fff;padding:6px 10px;font-family:'Arial',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:1px;border:1px solid #2a4070}
+.ttbl td{padding:6px 10px;border:1px solid #c8cdd8;vertical-align:top;line-height:1.55}
+.ttbl td:first-child{font-family:'Arial',sans-serif;font-weight:700;color:#0d1f3c;font-size:10px;white-space:nowrap;width:130px}
+.ttbl tr:nth-child(even) td{background:#f4f6f9}
+.act-bul{display:flex;align-items:flex-start;gap:6px;font-size:11px;line-height:1.6;margin-bottom:5px;color:#222;text-align:justify}
+.act-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:1px}
+.src-bul{display:flex;align-items:flex-start;gap:6px;font-size:10.5px;line-height:1.6;margin-bottom:4px;color:#222}
+.src-dot{color:#0d1f3c;font-size:14px;line-height:1.25;flex-shrink:0;margin-top:0}
+.callout{background:#fffbf0;border-left:3px solid #c08000;padding:9px 12px;margin:8px 0;font-family:'Arial',sans-serif;font-size:10.5px;line-height:1.6;color:#222}
+.bot-rule{height:4px;background:#0d1f3c}
+a{color:#0d1f3c}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ENTITY HEADER -->
+<div class="entity-block">
+  <div class="entity-name">National Iranian Oil Refining and Distribution Company and National Iranian Oil Company</div>
+  <div class="entity-aka">Profile 5.10</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-lbl">Summary Assessment</div>
+  <div class="sum-txt">NIORDC (National Iranian Oil Refining and Distribution Company) and its parent NIOC (National Iranian Oil Company) are Iranian state petroleum entities identified by Reuters in January 2026 as the most probable institutional sources of aviation fuel delivered to Myanmar in nine shipments between October 2024 and December 2025. The connection is established through satellite imagery confirming REEF and NOBLE loaded at Bandar Abbas before each Myanmar delivery, proximity to a NIORDC-overseen refinery, and and Kpler commodity intelligence, not documentary evidence naming either entity as seller. Iran earned an estimated USD 123 million from the nine shipments. NIOC was identified by OFAC in 2012 as an agent or affiliate of the IRGC. Both NIORDC and NIOC are sanctioned by the US, UK, and EU on Iran-related grounds predating and unconnected to Myanmar. Neither has been formally named by any government in connection with Myanmar.</div>
+</div>
+
+<!-- IDENTIFICATION -->
+<div>
+  <div class="sec-hd"><div class="sec-num">ID</div><div class="sec-ttl">Identification</div></div>
+  <div class="sec-body">
+
+    <div class="subh">National Iranian Oil Refining and Distribution Company (NIORDC)</div>
+    <div class="field"><span class="fl">Full name:</span><span class="fv">National Iranian Oil Refining and Distribution Company</span></div>
+    <div class="field"><span class="fl">Abbreviation:</span><span class="fv">NIORDC</span></div>
+    <div class="field"><span class="fl">National ID:</span><span class="fv">89152 (Iran)</span></div>
+    <div class="field"><span class="fl">Registered address:</span><span class="fv">4 Varsho Street, Tehran 1598666611, Iran (P.O. Box 15815/3499)</span></div>
+    <div class="field"><span class="fl">Website:</span><span class="fv">www.niordc.ir</span></div>
+    <div class="field"><span class="fl">Status:</span><span class="fv">Iranian state-owned company, incorporated 8 March 1992. A wholly owned subsidiary of NIOC. Responsible for engineering and building oil refineries, pipelines and communications networks throughout Iran. The Minister of Petroleum is responsible for appointing NIORDC's Chief Executive Officer. NIORDC oversees the Bandar Abbas Oil Refining Company (Shahid Tondgouyan Oil Refinery), which is located approximately 8 kilometres from the pier at which the REEF loaded Iranian jet fuel in September 2025.</span></div>
+    <div class="field"><span class="fl">Designation status:</span><span class="fv" style="color:#c00000;font-weight:700">Sanctioned: US, UK, EU (all Iran-related; not in connection with Myanmar).</span></div>
+
+    <div class="subh">National Iranian Oil Company (NIOC)</div>
+    <div class="field"><span class="fl">Full name:</span><span class="fv">National Iranian Oil Company</span></div>
+    <div class="field"><span class="fl">Abbreviation:</span><span class="fv">NIOC</span></div>
+    <div class="field"><span class="fl">Registered address:</span><span class="fv">NIOC Central Building, Junction of Taleghani Avenue and Hafez Street, Tehran, Iran (P.O. Box 1863 and 2501)</span></div>
+    <div class="field"><span class="fl">Website:</span><span class="fv">www.nioc.ir</span></div>
+    <div class="field"><span class="fl">Status:</span><span class="fv">Iranian state-owned and operated company, incorporated 6 December 1955. Parent company of NIORDC. Holds the production, sale and export monopoly for Iranian oil. Provides substantial financial resources to the Government of Iran. The revenue generated by NIOC's oil sales plays a significant role in funding Iran's military and the IRGC. The Minister of Oil is Director of the NIOC Board and the Deputy Minister of Oil is the Managing Director of NIOC. OFAC identified NIOC as an agent or affiliate of the IRGC in 2012.</span></div>
+    <div class="field"><span class="fl">Designation status:</span><span class="fv" style="color:#c00000;font-weight:700">Sanctioned: US, UK, EU (all Iran-related; not in connection with Myanmar).</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">1</div><div class="sec-ttl">Connection to the Myanmar Aviation Fuel Supply Chain</div></div>
+  <div class="sec-body">
+
+    <p class="prose">The evidentiary basis is satellite imagery and commodity intelligence, not documentary confirmation. Reuters reported that REEF loaded fuel at Bandar Abbas on 15 September 2025, approximately 8 kilometres from a refinery overseen by NIORDC. SynMax satellite imagery confirmed REEF at Bandar Abbas while its AIS transponder placed it near Iraq's Basrah Oil Terminal. Amnesty International independently confirmed satellite imagery placing REEF at Bandar Abbas between 12 and 17 September 2025 and NOBLE at Bandar Abbas before its June 2025 Myanmar delivery. Kpler assessed all nine REEF and NOBLE deliveries to Myanmar originated from Iran. (Reuters Jan 2026; AI Jan 2026)</p>
+
+    <p class="prose">Reuters reported that from October 2024 to December 2025 Iran delivered approximately 175,000 tonnes of jet fuel to Myanmar in nine shipments via REEF and NOBLE, earning an estimated USD 123 million at current market prices. Amnesty International noted that 2025 was the deadliest year on record for aerial attacks since the coup. Neither NIORDC nor NIOC has been formally named as seller in any published document from the Myanmar side of the transactions. (Reuters Jan 2026; AI Jan 2026)</p>
+
+</div>
+</div>
+
+<!-- SECTION 2 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">2</div><div class="sec-ttl">Broader Iran-Myanmar Relationship</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Weapons.</strong> In January 2022, an Iranian government delegation secretly visited Myanmar to discuss selling guided missiles and other military equipment, according to a regional security source reported by Asia Times. (Reuters Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Urea.</strong> Iran has become Myanmar's primary urea supplier, with annual imports estimated at 400,000 to 600,000 tonnes. The junta uses urea to manufacture explosives. At least two vessels, Golden ES and Rasha, delivered urea from Iran to Myanmar in 2025 using AIS manipulation. (Reuters Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Diplomatic engagement.</strong> In December 2025, Iranian President Masoud Pezeshkian met Myanmar's Prime Minister Nyo Saw on the sidelines of a Turkmenistan summit. The Iranian readout noted Myanmar's desire to expand cooperation in oil imports and extraction. Iran was invited to observe Myanmar's phased general election from 28 December 2025. (Reuters Jan 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 3 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">3</div><div class="sec-ttl">Key Relationships</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>REEF (IMO 9263382):</strong> The primary vessel through which Iranian jet fuel was delivered to Myanmar. REEF made four confirmed deliveries: October 2024, July 2025, 2 October 2025 (more than 16,000 tonnes), and 9 December 2025 (approximately 15,000 tonnes). For the October 2025 delivery, SynMax satellite imagery and Amnesty International's Evidence Lab both confirm REEF at Bandar Abbas on 15 September 2025, loading fuel approximately 8 kilometres from a NIORDC-overseen refinery, while its AIS simultaneously placed it near Basrah Oil Terminal, Iraq. REEF is flagged in Guinea and is part of Iran's shadow fleet. It was sanctioned by the US in 2024 for knowingly transporting Iranian petrochemical products. REEF and its owner, Sea Route Ship Management FZE, were both designated at that time. See Profile 6.5. (Reuters Jan 2026; AI Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>NOBLE (IMO 9162928):</strong> The vessel confirmed by Amnesty International as having been at Bandar Abbas before its June 2025 delivery to the Myan Oil Terminal. NOBLE delivered four shipments to Myanmar between January and June 2025. It is flagged in Guinea and described by Reuters as a larger sister ship to REEF. NOBLE and Sea Route Ship Management FZE were sanctioned by the US in 2024 for knowingly transporting Iranian petrochemical products. See Profile 6.6. (Reuters Jan 2026; AI Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Sea Route Ship Management FZE:</strong> The confirmed owner of both REEF and NOBLE, sanctioned by the US in 2024 for knowingly transporting Iranian petrochemical products. See Profile 6.7. (Reuters Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Myan Oil Terminal Company Limited, Thilawa, Yangon:</strong> The destination terminal for all confirmed REEF and NOBLE deliveries. The terminal was described by Reuters as "a facility on the outskirts of Yangon previously known as Puma." An archived website of a former corporate owner stated it "handled 100% of Myanmar's market for jet fuel." See Profile 1.3. (Reuters Jan 2026)</span></div>
+
+    <div class="bul" style="margin-bottom:0"><span class="bul-dot">&bull;</span><span><strong>FOAA, Fujairah, UAE:</strong> An offshore anchorage area used as an intermediary staging point. Amnesty International documented REEF and NOBLE visiting FOAA before proceeding to Bandar Abbas or directly to Myanmar. HUITONG 78 and YONG SHENG 56 also loaded via FOAA for their 2024 deliveries, though those vessels are not confirmed as having subsequently loaded at Bandar Abbas. See Profile 7.2. (AI Jan 2026)</span></div>
+
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">4</div><div class="sec-ttl">Designation Status</div></div>
+  <div class="sec-body">
+
+    <table class="stbl">
+      <tr>
+        <th>Entity</th>
+        <th>US</th><th>UK</th><th>EU</th><th>Canada</th><th>Australia</th>
+      </tr>
+      <tr>
+        <td>National Iranian Oil Refining and Distribution Company (NIORDC)<span class="sd">Iranian state refining company; oversees Bandar Abbas refinery 8 km from REEF load point. All designations are Iran-related.</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>National Iranian Oil Company (NIOC)<span class="sd">Parent company of NIORDC; controls Iran's petroleum exports; OFAC-identified IRGC affiliate. All designations are Iran-related.</span></td>
+        <td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td></td><td></td>
+      </tr>
+    </table>
+
+    <p class="prose" style="margin-top:10px">Neither NIORDC nor NIOC has been designated by any government in connection with Myanmar. All existing sanctions on both entities relate to Iran's nuclear programme, its support for the IRGC, and its destabilising activities. NIOC was designated by OFAC under Iran sanctions on Iran-related grounds, initially in 2012. NIORDC was designated by OFAC on 26 October 2020 under Executive Order 13224 (counterterrorism authority), as a subsidiary of Iran's Ministry of Petroleum, for being owned, controlled or directed by the Ministry of Petroleum. Both entities were designated by the UK and EU on 29 September 2025 under Iran nuclear weapons sanctions. Switzerland designated both entities on 12 December 2025.</p>
+
+    <p class="prose">At the time of the first documented Iranian jet fuel delivery to Myanmar in October 2024, NIORDC and NIOC were already subject to longstanding US sanctions. The UK and EU designations postdate the first delivery by approximately one year. No Myanmar-specific designation authority has been applied to either entity by any jurisdiction reviewed.</p>
+
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">5</div><div class="sec-ttl">Advocacy Interventions to Date</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>January 2026.</strong> Reuters identifies Bandar Abbas as the load point and NIORDC's refinery as proximate, estimating USD 123 million in Iranian revenues from nine shipments. No response from NIORDC, NIOC, or the Iranian government is reported. (Reuters Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>January 2026.</strong> Amnesty International independently confirms REEF and NOBLE at Bandar Abbas through satellite imagery and characterises the supply chain as having adopted state-level sanctions evasion tactics. No government formally names NIORDC or NIOC in connection with Myanmar. (AI Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>February 2026.</strong> Justice for Myanmar calls for coordinated sanctions on REEF, NOBLE, BARAAWE 1, LS MERCURY and their owners and managers. NIORDC and NIOC are not named in the call. No designation of either in connection with Myanmar has been documented as of April 2026. (JFM Feb 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 6 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">6</div><div class="sec-ttl">Recommended Actions</div></div>
+  <div class="sec-body">
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Prioritise obtaining documentary evidence from the Myanmar side of the transactions.</strong> The satellite and commodity intelligence record is strong, but a shipping manifest, bill of lading, or customs clearance record naming NIORDC or NIOC as seller would transform the evidentiary basis. Investigative journalists and civil society should target Myanmar Port Authority records, Myan Oil Terminal import documentation, and NEPAS purchase records. Shipping documents reviewed by Reuters in connection with the December 2025 delivery have not been published in full. (Reuters Jan 2026)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Assess Myanmar-specific designation submissions for NIORDC and NIOC.</strong> Both entities are already fully sanctioned by the US, UK, and EU on Iran-related grounds, limiting the incremental legal effect. Nevertheless, a formal Myanmar-specific designation would place the connection on the public record and may create additional leverage. The August 2023 OFAC sector determination provides the most directly applicable US authority. Civil society should assess whether the satellite and Kpler evidence meets the evidentiary threshold. (Reuters Jan 2026; OFAC Aug 2023)</span></div>
+
+    <div class="bul"><span class="bul-dot">&bull;</span><span><strong>Engage governments with influence over Iran to raise the Myanmar fuel trade directly.</strong> The December 2025 Pezeshkian-Nyo Saw meeting and the weapons and urea supply relationships indicate a deliberate government-level decision to supply Myanmar. Vessel-level sanctions will not disrupt this relationship without diplomatic pressure on Iran. Governments involved in nuclear negotiations or trade frameworks with Iran should be urged to raise the Myanmar jet fuel trade as a condition of any engagement. (Reuters Jan 2026)</span></div>
+
+</div>
+</div>
+
+<!-- SECTION 7 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">7</div><div class="sec-ttl">Timeline</div></div>
+  <div class="sec-body">
+    <table class="ttbl">
+      <tr><th style="width:130px">Date</th><th>Event</th></tr>
+      <tr><td>2012</td><td>OFAC designates NIOC under Iran sanctions, identifying it as an agent or affiliate of the IRGC-Qods Force. (Reuters Jan 2026)</td></tr>
+      <tr><td>26 October 2020</td><td>OFAC designates NIORDC under Executive Order 13224 (counterterrorism authority) as a subsidiary of Iran's Ministry of Petroleum, owned, controlled or directed by the Ministry. (Reuters Jan 2026)</td></tr>
+      <tr><td>October 2024</td><td>REEF makes its first confirmed delivery of Iranian jet fuel to the Myan Oil Terminal at Thilawa, Yangon. Bandar Abbas is identified as the load port by AIS spoofing analysis and satellite imagery.</td></tr>
+      <tr><td>January-June 2025</td><td>NOBLE delivers four shipments of jet fuel to the Myan Oil Terminal. Satellite imagery confirms NOBLE at Bandar Abbas before the June 2025 delivery. (AI Jan 2026)</td></tr>
+      <tr><td>15 September 2025</td><td>REEF loads jet fuel at a pier in Bandar Abbas, Iran, approximately 8 kilometres from a NIORDC-overseen refinery. SynMax satellite imagery confirms REEF's presence. REEF's AIS simultaneously places it over 750 kilometres away near Basrah Oil Terminal, Iraq, displaying anomalous box-shaped loitering patterns consistent with AIS manipulation. (Reuters Jan 2026; AI Jan 2026)</td></tr>
+      <tr><td>29 September 2025</td><td>The UK and EU designate both NIORDC and NIOC under Iran nuclear weapons sanctions. These designations are not connected to Myanmar. (Reuters Jan 2026)</td></tr>
+      <tr><td>2 October 2025</td><td>REEF arrives at the Myan Oil Terminal, Thilawa, Yangon, and offloads more than 16,000 tonnes of jet fuel. (Reuters Jan 2026; AI Jan 2026)</td></tr>
+      <tr><td>9 December 2025</td><td>REEF docks at the Myan Oil Terminal and offloads approximately 15,000 tonnes of jet fuel. A satellite image from BlackSky confirms REEF's presence on 9 December 2025. REEF again spoofed its AIS to show it travelling from Basrah Oil Terminal, Iraq to Chittagong, Bangladesh. (Reuters Jan 2026)</td></tr>
+      <tr><td>December 2025</td><td>Iranian President Masoud Pezeshkian meets Myanmar's Prime Minister Nyo Saw on the sidelines of a summit in Turkmenistan. An Iranian readout states Nyo Saw emphasised the desire to expand cooperation in oil imports and extraction technology. (Reuters Jan 2026)</td></tr>
+      <tr><td>12 December 2025</td><td>Switzerland designates both NIORDC and NIOC under measures against the Islamic Republic of Iran. These designations are not connected to Myanmar.</td></tr>
+      <tr><td>January 2026</td><td>Reuters publishes its investigation identifying Iran as the source of nine jet fuel shipments to Myanmar via REEF and NOBLE, totalling approximately 175,000 tonnes and earning Iran an estimated USD 123 million. Amnesty International independently publishes its Ghost Ships investigation confirming Bandar Abbas as the load point via satellite imagery. (Reuters Jan 2026; AI Jan 2026)</td></tr>
+      <tr><td>Late January 2026</td><td>SynMax data shows REEF loaded and heading back toward Yangon. NOBLE is detected loitering near Bandar Abbas while its AIS falsely shows it anchored off southern Iraq. (Reuters Jan 2026)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div>
+  <div class="sec-hd"><div class="sec-num">8</div><div class="sec-ttl">Sources</div></div>
+  <div class="sec-body">
+
+    <div class="src-bul"><span class="src-dot">&bull;</span><span><strong>(Reuters Jan 2026)</strong> Reuters (David Gauthier-Villars, Poppy McPherson), <em>Iranian Ships Deliver Jet Fuel, Urea to Myanmar Junta,</em> January 2026.</span></div>
+
+    <div class="src-bul" style="margin-bottom:0"><span class="src-dot">&bull;</span><span><strong>(AI Jan 2026)</strong> Amnesty International, <em>Ghost Ships: How Iran Is Fuelling Deadly Airstrikes in Myanmar,</em> January 2026. Available at: <a href="https://www.amnesty.org/en/documents/asa16/8845/2026/en/">https://www.amnesty.org/en/documents/asa16/8845/2026/en/</a></span></div>
+
+  </div>
+</div>
+
+<div class="bot-rule"></div>
+</div>
+</body>
+</html>
