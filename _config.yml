@@ -1,9 +1,0 @@
-include:
-  - "*.jpg"
-  - "*.jpeg"
-  - "*.png"
-  - "*.webp"
-  - "*.gif"
-  - "*.svg"
-
-plugins: []
